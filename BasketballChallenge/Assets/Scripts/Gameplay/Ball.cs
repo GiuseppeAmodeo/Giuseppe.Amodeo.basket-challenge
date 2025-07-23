@@ -74,7 +74,6 @@ public class Ball : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-
         if (this.EnteredBasket != null)
         {
             if (this.collisionCount == 0)
