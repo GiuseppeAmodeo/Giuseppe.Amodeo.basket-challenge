@@ -1,18 +1,94 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
+using System;
+using Unity.VisualScripting.Antlr3.Runtime.Tree;
 
 public class Ball : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    private Rigidbody rb;
+
+    private int collisionCount;
+
+    private int layerRing;
+    private int layerFloor;
+    private int layerBackboard;
+    private bool hasCollidedWithBackboard;
+
+    private void Reset()
     {
-        
+        this.rb = base.GetComponent<Rigidbody>();
+        this.rb.useGravity = false;
+        this.rb.mass = 0.65f;
+        this.rb.drag = 0.0f;
+        this.rb.angularDrag = 0.05f;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-        
+        this.layerFloor = LayerMask.NameToLayer("Floor");
+        this.layerRing = LayerMask.NameToLayer("Ring");
+        this.layerBackboard = LayerMask.NameToLayer("Backboard");
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        this.collisionCount++;
+
+        int layer = collision.gameObject.layer;
+
+        if (layer == this.layerRing)
+        {
+            //Hit Ring.
+            Debug.Log("The ball touched the Ring");
+        }
+        else if (layer == this.layerFloor)
+        {
+            Debug.Log("No Basket!");
+
+            this.hasCollidedWithBackboard = false;
+        }
+        else if (layer == this.layerBackboard)
+        {
+            Debug.Log("The ball touched the Backboard");
+
+            this.hasCollidedWithBackboard = true;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (this.collisionCount == 0)
+        {
+            Debug.Log("Perfect Basket!");
+        }
+        else
+        {
+            if (hasCollidedWithBackboard)
+            {
+                Debug.Log("Backboard Basket!");
+            }
+        }
+
+        this.hasCollidedWithBackboard = false;
+    }
+
+    public void Shoot(Vector3 force, Vector3 torque)
+    {
+        this.rb.useGravity = true;
+        this.rb.AddForce(force * this.rb.mass, ForceMode.Impulse);
+        this.rb.AddTorque(torque);
+    }
+
+    public void Restore(Vector3 position)
+    {
+        this.rb.useGravity = false;
+        this.rb.velocity = Vector3.zero;
+        this.rb.angularVelocity = Vector3.zero;
+        base.transform.position = position;
     }
 }
+
+

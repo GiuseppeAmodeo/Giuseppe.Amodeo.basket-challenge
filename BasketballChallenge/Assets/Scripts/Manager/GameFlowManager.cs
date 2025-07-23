@@ -17,16 +17,30 @@ public class GameFlowManager : MonoBehaviour
     private GameState currentGameState;
 
     [Header("UI References")]
-    [SerializeField] private GameObject mainMenuUI;
-    [SerializeField] private GameObject gameplayUI;
-    [SerializeField] private GameObject rewardUI;
+    [SerializeField]
+    private GameObject mainMenuUI;
+
+    [SerializeField]
+    private GameObject gameplayUI;
+
+    [SerializeField]
+    private GameObject rewardUI;
 
     [Header("UI Buttons")]
-    [SerializeField] private Button btnStart;
-    [SerializeField] private Button btnPlay;
-    [SerializeField] private Button btnBackToMain;
-    [SerializeField] private Button btnShowReward;
-    [SerializeField] private Button btnQuit;
+    [SerializeField]
+    private Button btnStart;
+    
+    [SerializeField]
+    private Button btnPlay;
+    
+    [SerializeField]
+    private Button btnBackToMain;
+    
+    [SerializeField]
+    private Button btnShowReward;
+    
+    [SerializeField]
+    private Button btnQuit;
 
     private void Awake()
     {
