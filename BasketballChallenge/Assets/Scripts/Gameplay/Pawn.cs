@@ -87,11 +87,11 @@ public class Pawn : MonoBehaviour
         }
 
         this.shootingForceNormalized = 0f;
-        this.currentShootingPoint = Court.Instance.GetShootingPoint();
+        this.currentShootingPoint = Court.Instance.GetFreeRandomShootingPoint();
         this.currentShootingPoint.IsBusy = true;
         Vector3 normalized = (Court.Instance.PointEnterHoop.position - this.currentShootingPoint.transform.position).normalized;
         this.currentShootingPoint.transform.rotation = Quaternion.LookRotation(normalized);
-        this.Ball.Restore(this.currentShootingPoint.transform.position);
+        this.Ball.Restore(this.currentShootingPoint.BallLocator.position);
 
         if (this.PawnSetup != null)
         {

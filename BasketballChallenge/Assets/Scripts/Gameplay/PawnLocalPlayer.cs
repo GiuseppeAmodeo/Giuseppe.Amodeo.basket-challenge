@@ -33,6 +33,8 @@ public class PawnLocalPlayer : Pawn, IInputReceiver
         }
 
         InputManager.Instance.IsInputEnabled = true;
+        CameraManager.Instance.Translate(this.currentShootingPoint.transform.position);
+        CameraManager.Instance.LookAt(Court.Instance.PointEnterHoop);
     }
 
 

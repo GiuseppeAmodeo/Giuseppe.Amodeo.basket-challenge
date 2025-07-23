@@ -27,13 +27,20 @@ public class ShootingPoint : MonoBehaviour
     public bool IsBusy { get; set; }
 
     public float Angle = 60f;
-   
+
+    public Transform BallLocator;
+
+
+    private void Reset()
+    {
+        this.BallLocator = base.GetComponentsInChildren<Transform>().FirstOrDefault((Transform t) => t.name.Contains("BallLocator"));
+    }
 
     // Start is called before the first frame update
     private void Start()
     {
         float y = Physics.gravity.y;
-        Vector3 position= this.transform.position;
+        Vector3 position= this.BallLocator.position;
         Vector3 position2 = Court.Instance.PointEnterHoop.position;
         float num = Mathf.Abs(position.y - position2.y);
         position.y = 0f;
