@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Net.NetworkInformation;
 using UnityEngine;
 
 public class InputProviderMouse : InputProvider
@@ -12,7 +11,7 @@ public class InputProviderMouse : InputProvider
         {
             base.OnInputDown(Input.mousePosition);
         }
-        if (Input.GetMouseButtonUp(0))
+        if(Input.GetMouseButtonUp(0))
         {
             base.OnInputUp(Input.mousePosition);
         }

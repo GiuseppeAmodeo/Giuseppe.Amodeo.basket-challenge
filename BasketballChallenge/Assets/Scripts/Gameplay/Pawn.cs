@@ -1,10 +1,18 @@
-﻿using UnityEditor.Experimental.GraphView;
+﻿using System;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 public class Pawn : MonoBehaviour
 {
+    public event Action PawnSetup;
+    public event Action PawnShoot;
+
     public Ball Ball { get; private set; }
+
+    public bool IsShooting { get; protected set; }
+
+    public bool CanShoot { get; protected set; }
 
     public float ShootMaxSpread = 5f;
 
@@ -22,6 +30,8 @@ public class Pawn : MonoBehaviour
         }
     }
 
+    private float shootingForceNormalized;
+
     public float ShootingSpread
     {
         get
@@ -32,89 +42,81 @@ public class Pawn : MonoBehaviour
         {
             this.shootingSpread = Mathf.Clamp(value, -this.ShootMaxSpread, this.ShootMaxSpread);
         }
-    }   
+    }
+
+
+    private float shootingSpread;
 
     [SerializeField]
     private Ball ballPrefab;
 
-    private float shootingForceNormalized = 0.0f;
+    protected ShootingPoint currentShootingPoint;
 
-    private float shootingSpread = 0.0f;
-
-    public float Angle = 60f;
-
-    public float MinForce = 4f;
-    public float MaxForce = 7f;
-
-    private void Start()
+    protected virtual void Start()
     {
         this.Ball = Instantiate<Ball>(this.ballPrefab);
+        this.Ball.EnteredBasket += this.OnBallEnteredBasket;
+        this.CanShoot = true;
     }
 
-    /// <summary>
-    /// Test the ball shooting mechanics.
-    /// </summary>
-    private void OnGUI()
+    private void OnDestroy()
     {
-        if (GUI.Button(new Rect(10, 10, 100, 30), "Swish"))
+        this.Ball.EnteredBasket -= this.OnBallEnteredBasket;
+    }
+
+    protected virtual void OnBallEnteredBasket(ScoreType scoreType)
+    {
+        Debug.Log("BASKET!");
+
+        //Basket => Add Score
+
+    }
+
+    public virtual void Setup()
+    {
+        this.IsShooting = false;
+
+        if (this.currentShootingPoint != null)
         {
-            ShootSwish();
+            this.currentShootingPoint.IsBusy = false;
         }
-        if (GUI.Button(new Rect(10, 50, 100, 30), "Bank"))
+
+        this.shootingForceNormalized = 0f;
+        this.currentShootingPoint = Court.Instance.GetShootingPoint();
+        this.currentShootingPoint.IsBusy = true;
+        Vector3 normalized = (Court.Instance.PointEnterHoop.position - this.currentShootingPoint.transform.position).normalized;
+        this.currentShootingPoint.transform.rotation = Quaternion.LookRotation(normalized);
+        this.Ball.Restore(this.currentShootingPoint.transform.position);
+
+        if (this.PawnSetup != null)
         {
-            ShootBank();
-        }
-        if (GUI.Button(new Rect(10, 90, 100, 30), "RimHitOrMiss"))
-        {
-            ShootRimHitOrMiss();
+            this.PawnSetup();
         }
     }
 
-    public void ShootSwish()
+    public virtual void Shoot()
     {
-        this.Ball.Shoot(GetPerfectForce(Court.Instance.PointEnterHoop.transform), transform.forward);
-    }
-
-    public void ShootBank()
-    {
-        this.Ball.Shoot(GetPerfectForce(Court.Instance.PointBackboard.transform), transform.forward);
-    }
-
-    public void ShootRimHitOrMiss()
-    {
-        this.Ball.Shoot(GetPerfectForce(Court.Instance.PointRim.transform), transform.forward);
-    }
-
-
-    private Vector3 GetPerfectForce(Transform target)
-    {
-        Vector3 vector = (target.transform.position - this.Ball.transform.position).normalized;
-
-        Transform transform = this.Ball.transform;
+        this.IsShooting = true;
+        Vector3 vector = (Court.Instance.PointEnterHoop.position - this.Ball.transform.position).normalized;
+        ShootingPoint shootingPoint = this.currentShootingPoint;
+        Transform transform = shootingPoint.transform;
         transform.forward = vector;
-
+        float x = -shootingPoint.Angle;
         Vector3 eulerAngles = transform.rotation.eulerAngles;
-        float x = -Angle;
-
         eulerAngles = new Vector3(x, eulerAngles.y + this.shootingSpread, eulerAngles.z);
         transform.rotation = Quaternion.Euler(eulerAngles);
-
+        float minForce = this.currentShootingPoint.MinForce;
+        float maxForce = this.currentShootingPoint.MaxForce;
+        float d = (maxForce - minForce) * this.shootingForceNormalized + minForce;
         vector = transform.forward;
+        this.Ball.Shoot(vector * d, transform.forward);
 
-        float y = Physics.gravity.y;
-        Vector3 position = this.Ball.transform.position;
-        Vector3 position2 = target.transform.position;
-        float num = Mathf.Abs(position.y - position2.y);
-        position.y = 0f;
-        position2.y = 0f;
-        float magnitude = (position - position2).magnitude;
-        float f = this.Angle * 0.017453292f;
-        float num2 = y * magnitude * magnitude;
-        float num3 = (num - Mathf.Tan(f) * magnitude) * 2f * Mathf.Cos(f) * Mathf.Cos(f);
-        float f2 = num2 / num3;
-        float perfectForce = Mathf.Sqrt(f2);
+        if (this.PawnShoot!=null)
+        {
+            this.PawnShoot();
+        }
 
-        return perfectForce * vector;
     }
+
 
 }

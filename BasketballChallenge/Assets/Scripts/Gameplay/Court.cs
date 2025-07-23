@@ -10,6 +10,10 @@ public sealed class Court : MonoBehaviour
     public Transform PointBackboard;
     public Transform PointRim;
 
+    public Backboard Backboard;
+
+    public ShootingPoint ShootingPoint;
+
     private void Awake()
     {
         if (Instance != null)
@@ -18,5 +22,12 @@ public sealed class Court : MonoBehaviour
         }
 
         Instance = this;
+    }
+
+
+    //Only one shooting point
+    public ShootingPoint GetShootingPoint()
+    {
+        return ShootingPoint;
     }
 }

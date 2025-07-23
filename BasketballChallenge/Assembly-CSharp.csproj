@@ -60,6 +60,7 @@
     <Compile Include="Assets\Scripts\Gameplay\Court.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Ball.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Backboard.cs" />
     <Compile Include="Assets\Scripts\Enums\ScoreType.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Pawn.cs" />
     <Compile Include="Assets\Scripts\Input\IInputReceiver.cs" />
@@ -68,6 +69,11 @@
     <Compile Include="Assets\Scripts\Input\InputProviderMouse.cs" />
     <Compile Include="Assets\Scripts\Input\InputProviderTouch.cs" />
     <Compile Include="Assets\Scripts\Gameplay\PawnLocalPlayer.cs" />
+    <Compile Include="Assets\Scripts\Manager\CameraManager.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\ShootingPoint.cs" />
+    <Compile Include="Assets\Scripts\FSM\FSM.cs" />
+    <Compile Include="Assets\Scripts\FSM\FSMState.cs" />
+    <Compile Include="Assets\Scripts\FSM\FSMShootRoutineLocalPlayer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

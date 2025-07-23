@@ -5,35 +5,35 @@ using UnityEngine;
 public abstract class InputProvider : MonoBehaviour
 {
 
-    public IInputReceiver[] InputReceivers;
+    public IInputReceiver[] inputReceivers;
 
     private void Awake()
     {
-        this.InputReceivers = base.GetComponentsInChildren<IInputReceiver>();
+        this.inputReceivers = base.GetComponentsInChildren<IInputReceiver>();
     }
 
 
     protected void OnInputDown(Vector3 position)
     {
-        for (int i = 0; i < this.InputReceivers.Length; i++)
+        for (int i = 0; i < this.inputReceivers.Length; i++)
         {
-            this.InputReceivers[i].OnInputDown(position);
+            this.inputReceivers[i].OnInputDown(position);
         }
     }
 
     protected void OnInputUp(Vector3 position)
     {
-        for (int i = 0; i < this.InputReceivers.Length; i++)
+        for (int i = 0; i < this.inputReceivers.Length; i++)
         {
-            this.InputReceivers[i].OnInputUp(position);
+            this.inputReceivers[i].OnInputUp(position);
         }
     }
 
     protected void OnInputPressed(Vector3 position)
     {
-        for (int i = 0; i < this.InputReceivers.Length; i++)
+        for (int i = 0; i < this.inputReceivers.Length; i++)
         {
-            this.InputReceivers[i].OnInputPressed(position);
+            this.inputReceivers[i].OnInputPressed(position);
         }
     }
 }
