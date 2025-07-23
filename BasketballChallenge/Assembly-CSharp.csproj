@@ -67,6 +67,7 @@
     <Compile Include="Assets\Scripts\Input\InputManager.cs" />
     <Compile Include="Assets\Scripts\Input\InputProviderMouse.cs" />
     <Compile Include="Assets\Scripts\Input\InputProviderTouch.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\PawnLocalPlayer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

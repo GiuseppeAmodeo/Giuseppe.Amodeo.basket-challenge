@@ -29,7 +29,8 @@ public class InputManager : MonoBehaviour
         }
 
         InputManager.Instance = this;
-        this.inputProvider.AddComponent<InputProviderMouse>();
+
+        this.inputProvider = this.gameObject.AddComponent<InputProviderMouse>();
 
     }
 }

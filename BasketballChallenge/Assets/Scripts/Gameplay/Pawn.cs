@@ -6,17 +6,38 @@ public class Pawn : MonoBehaviour
 {
     public Ball Ball { get; private set; }
 
-    // Token: 0x040000DB RID: 219
     public float ShootMaxSpread = 5f;
 
-    // Token: 0x040000DC RID: 220
     public float ShootForceCoefficient = 1.5f;
 
-    // Token: 0x040000DD RID: 221
+    public float ShootingForceNormalized
+    {
+        get
+        {
+            return this.shootingForceNormalized;
+        }
+        set
+        {
+            this.shootingForceNormalized = Mathf.Clamp01(value);
+        }
+    }
+
+    public float ShootingSpread
+    {
+        get
+        {
+            return this.shootingSpread;
+        }
+        set
+        {
+            this.shootingSpread = Mathf.Clamp(value, -this.ShootMaxSpread, this.ShootMaxSpread);
+        }
+    }   
+
     [SerializeField]
     private Ball ballPrefab;
 
-    private float shootingForceNormalized;
+    private float shootingForceNormalized = 0.0f;
 
     private float shootingSpread = 0.0f;
 
