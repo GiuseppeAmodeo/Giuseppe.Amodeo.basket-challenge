@@ -90,6 +90,12 @@
     <Compile Include="Assets\Scripts\Gameplay\Match.cs" />
     <Compile Include="Assets\Scripts\Manager\GameSettings.cs" />
     <Compile Include="Assets\Scripts\GUI\GUIGameManager.cs" />
+    <Compile Include="Assets\Scripts\GUI\GUIPawnScoreInfo.cs" />
+    <Compile Include="Assets\Scripts\GUI\GUIScore.cs" />
+    <Compile Include="Assets\Scripts\VFX\IEffect.cs" />
+    <Compile Include="Assets\Scripts\VFX\VFXTrail.cs" />
+    <Compile Include="Assets\Scripts\Utilities\GameObjectDisableAfterTime.cs" />
+    <Compile Include="Assets\Scripts\GUI\GUIBar.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
