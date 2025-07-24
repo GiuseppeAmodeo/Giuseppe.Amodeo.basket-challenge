@@ -21,7 +21,7 @@ public class GameFlowManager : MonoBehaviour
     private GameObject mainMenuUI;
 
     [SerializeField]
-    private GameObject gameplayUI;
+    private GameObject gameplay;
 
     [SerializeField]
     private GameObject rewardUI;
@@ -69,8 +69,8 @@ public class GameFlowManager : MonoBehaviour
         if (mainMenuUI != null)
             mainMenuUI.SetActive(currentGameState == GameState.MainMenu);
 
-        if (gameplayUI != null)
-            gameplayUI.SetActive(currentGameState == GameState.Gameplay);
+        if (gameplay != null)
+            gameplay.SetActive(currentGameState == GameState.Gameplay);
 
         if (rewardUI != null)
             rewardUI.SetActive(currentGameState == GameState.Reward);

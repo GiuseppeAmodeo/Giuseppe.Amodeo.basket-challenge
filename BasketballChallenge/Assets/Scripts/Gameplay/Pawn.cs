@@ -111,6 +111,11 @@ public class Pawn : MonoBehaviour
         }
     }
 
+    public void ResetScore()
+    {
+        this.Score = 0;
+    }
+
     public virtual void Shoot()
     {
         this.IsShooting = true;

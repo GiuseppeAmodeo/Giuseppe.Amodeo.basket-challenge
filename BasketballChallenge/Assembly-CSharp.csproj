@@ -84,6 +84,12 @@
     <Compile Include="Assets\LeanTween\Framework\LeanTweenExt.cs" />
     <Compile Include="Assets\Scripts\GUI\GUIBackboardScoreInfo.cs" />
     <Compile Include="Assets\Scripts\FSM\FSMBackBoardRoutine.cs" />
+    <Compile Include="Assets\Scripts\Manager\LoadLevel.cs" />
+    <Compile Include="Assets\Scripts\GUI\GUIMenuManager.cs" />
+    <Compile Include="Assets\Scripts\Manager\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Match.cs" />
+    <Compile Include="Assets\Scripts\Manager\GameSettings.cs" />
+    <Compile Include="Assets\Scripts\GUI\GUIGameManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
