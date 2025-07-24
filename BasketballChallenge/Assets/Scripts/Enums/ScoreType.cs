@@ -5,8 +5,9 @@ using UnityEngine;
 public enum ScoreType
 {
     Zero,
-    SimpleScore=2,
+    SimpleScore = 2,
     PerfectScore,
-    MinBackBoardScore,
-    MaxBackBoardScore
+    MinBackBoardScore = 4,
+    MidBackBoardScore = 6,
+    MaxBackBoardScore = 8
 }
