@@ -26,6 +26,11 @@ public class GUIGameManager : MonoBehaviour
     [SerializeField]
     private GUIBar guiForceBar;
 
+    [SerializeField]
+    private GUIBar guiEnergyBar;
+
+    private EnergyAccumulator energyAccumulatorLocalPlayer;
+
     private void Reset()
     {
         this.loadLevelScript = base.GetComponent<LoadLevel>();
@@ -35,6 +40,8 @@ public class GUIGameManager : MonoBehaviour
         this.textTime = componentsInChildren.First((RectTransform hR) => hR.name.Contains("TextTime")).GetComponent<TMP_Text>();
         GUIBar[] componentsInChildren2 = base.GetComponentsInChildren<GUIBar>();
         this.guiForceBar = componentsInChildren2.FirstOrDefault((GUIBar hB) => hB.name.Contains("Force"));
+        this.guiEnergyBar = componentsInChildren2.FirstOrDefault((GUIBar hB) => hB.name.Contains("Energy"));
+
     }
 
     private void Awake()
@@ -45,11 +52,20 @@ public class GUIGameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameManager.CurrentMatch.Ended += OnCurrentMatchEnded;
+        GameManager.CurrentMatch.Ended += this.OnCurrentMatchEnded;
         GameManager.CurrentMatch.CurrentTimeChanged += this.OnMatchCurrentTimeChanged;
-        GameManager.CurrentMatch.PawnLocalPlayer.PawnSetup += this.OnPawnLocalPlayerSetup;
         GameManager.CurrentMatch.PawnLocalPlayer.ForceChanged += this.OnPawnLocalPlayerForceChanged;
         GameManager.CurrentMatch.PawnLocalPlayer.PerfectForceChanged += this.OnPawnLocalPlayerPerfectForceChanged;
+        GameManager.CurrentMatch.PawnLocalPlayer.PawnSetup += this.OnPawnLocalPlayerSetup;
+
+        this.energyAccumulatorLocalPlayer = GameManager.CurrentMatch.PawnLocalPlayer.GetComponent<EnergyAccumulator>();
+
+        if (this.energyAccumulatorLocalPlayer!=null)
+        {
+            this.guiEnergyBar.ThresholdValueSlider.value = this.energyAccumulatorLocalPlayer.ThresholdValue;
+            this.energyAccumulatorLocalPlayer.ThresholdChanged += this.OnEnergyAccumulatorLocalPlayerThresholdChanged;
+            this.energyAccumulatorLocalPlayer.ValueChanged += this.OnEnergyAccumulatorLocalPlayerValueChanged;
+        }
 
         this.guiScoreLocalPlayer.Init(GameManager.CurrentMatch.PawnLocalPlayer);
 
@@ -62,7 +78,8 @@ public class GUIGameManager : MonoBehaviour
         GameManager.CurrentMatch.PawnLocalPlayer.ForceChanged -= this.OnPawnLocalPlayerForceChanged;
         GameManager.CurrentMatch.PawnLocalPlayer.PerfectForceChanged -= this.OnPawnLocalPlayerPerfectForceChanged;
         GameManager.CurrentMatch.PawnLocalPlayer.PawnSetup -= this.OnPawnLocalPlayerSetup;
-
+        this.energyAccumulatorLocalPlayer.ThresholdChanged -= this.OnEnergyAccumulatorLocalPlayerThresholdChanged;
+        this.energyAccumulatorLocalPlayer.ValueChanged -= this.OnEnergyAccumulatorLocalPlayerValueChanged;
     }
 
     private void OnPawnLocalPlayerSetup()
@@ -101,14 +118,25 @@ public class GUIGameManager : MonoBehaviour
         this.guiForceBar.SetPerfectForce(perfectForce);
     }
 
+    private void OnEnergyAccumulatorLocalPlayerValueChanged(float value)
+    {
+        this.guiEnergyBar.CurrentValueSlider.value = value;
+    }
+
+    private void OnEnergyAccumulatorLocalPlayerThresholdChanged(float threshold)
+    {
+        this.guiEnergyBar.ThresholdValueSlider.value = threshold;
+    }
 
     public void OnButtonDonePressed()
     {
         InputManager.Instance.IsInputEnabled = true;
+        this.guiForceBar.gameObject.SetActive(true);
         this.guiRewardPanel.SetActive(false);
         Time.timeScale = 1f;
         GameManager.CurrentMatch.Begin();
         GameManager.CurrentMatch.PawnLocalPlayer.ResetScore();
+        GameManager.CurrentMatch.PawnLocalPlayer.Setup();
     }
 
     public void OnQuitButtonPressed()

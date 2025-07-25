@@ -8,4 +8,6 @@ public class GUIPawnScoreInfo
     public GameObject ScoreGameObject;
 
     public ScoreType ScoreType;
+
+    public bool IsPowerActive;
 }

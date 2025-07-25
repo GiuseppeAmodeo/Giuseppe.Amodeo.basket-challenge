@@ -160,6 +160,7 @@ GameObject:
   - component: {fileID: 7728242879993864491}
   - component: {fileID: 7728242879993864489}
   - component: {fileID: 7728242879993864490}
+  - component: {fileID: 5574966321169492524}
   m_Layer: 0
   m_Name: Pawn
   m_TagString: Untagged
@@ -239,3 +240,19 @@ MonoBehaviour:
   shootDelay: 0.5
   setupDelay: 0.5
   shootInputThreshold: 0.1
+--- !u!114 &5574966321169492524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7728242879993864471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b1853cfb47307240bb74b219e39eb00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CoolDownSpeed: 0.05
+  ThresholdValue: 0.7
+  AccumulationCoefficient: 0.1
+  pawn: {fileID: 7728242879993864468}

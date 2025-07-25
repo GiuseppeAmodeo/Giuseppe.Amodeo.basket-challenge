@@ -10,6 +10,29 @@ public class Ball : MonoBehaviour
     public event Action TouchedFloor;
     public event Action<ScoreType> EnteredBasket;
 
+    public bool IsPowerActive
+    {
+        get
+        {
+            return this.isPowerActive;
+        }
+        set
+        {
+            this.isPowerActive = value;
+
+            if (value)
+            {
+                //On effectVFX
+            }
+            else
+            {
+                //Off effectVFX
+            }
+        }
+    }
+
+    public int PowerScoreMultiplier = 2;
+
     [SerializeField]
     private Rigidbody rb;
 
@@ -19,6 +42,7 @@ public class Ball : MonoBehaviour
     private int layerFloor;
     private int layerBackboard;
     private bool hasCollidedWithBackboard;
+    private bool isPowerActive;
 
     private void Reset()
     {
@@ -57,7 +81,6 @@ public class Ball : MonoBehaviour
         }
         else if (layer == this.layerFloor)
         {
-
             if (this.TouchedFloor != null)
             {
                 this.TouchedFloor();
@@ -78,14 +101,14 @@ public class Ball : MonoBehaviour
         {
             if (this.collisionCount == 0)
             {
-                if (this.EnteredBasket!=null)
+                if (this.EnteredBasket != null)
                 {
                     this.EnteredBasket(ScoreType.PerfectScore);
                 }
             }
             else
             {
-               this.EnteredBasket((!this.hasCollidedWithBackboard) ? ScoreType.SimpleScore : Court.Instance.Backboard.CurrentBackboardScore);
+                this.EnteredBasket((!this.hasCollidedWithBackboard) ? ScoreType.SimpleScore : Court.Instance.Backboard.CurrentBackboardScore);
             }
         }
 

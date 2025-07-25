@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 
 public class Pawn : MonoBehaviour
 {
-    public delegate void ScoreChangedHandler(int score, ScoreType scoreType);
+    public delegate void ScoreChangedHandler(int score, ScoreType scoreType, bool isPowerActive);
 
     public event ScoreChangedHandler ScoreChanged;
 
@@ -77,7 +77,12 @@ public class Pawn : MonoBehaviour
     {
         int num = (int)scoreType;
 
-        this.AddScore(num, scoreType);
+        if (this.Ball.IsPowerActive)
+        {
+            num *= this.Ball.PowerScoreMultiplier;
+        }
+
+        this.AddScore(num, scoreType, this.Ball.IsPowerActive);
     }
 
     private void OnCurrentMatchEnded()
@@ -106,6 +111,8 @@ public class Pawn : MonoBehaviour
             this.currentShootingPoint.IsBusy = false;
         }
 
+        base.gameObject.SetActive(true);
+        this.Ball.gameObject.SetActive(true);
         this.shootingForceNormalized = 0f;
         this.currentShootingPoint = Court.Instance.GetFreeRandomShootingPoint();
         this.currentShootingPoint.IsBusy = true;
@@ -119,7 +126,7 @@ public class Pawn : MonoBehaviour
         }
     }
 
-    public void AddScore(int score, ScoreType scoreType)
+    public void AddScore(int score, ScoreType scoreType, bool isPowerActive)
     {
         this.Score += score;
         Debug.Log($"Score changed: {this.Score} ");
@@ -127,7 +134,7 @@ public class Pawn : MonoBehaviour
         if (this.ScoreChanged != null)
         {
             // Notify subscribers about the score change
-            this.ScoreChanged(this.Score, scoreType);
+            this.ScoreChanged(this.Score, scoreType, isPowerActive);
         }
     }
 
