@@ -9,6 +9,8 @@ public class Match : MonoBehaviour
 
     public event Action Ended;
 
+    public event Action<float> CurrentTimeChanged;
+
     public PawnLocalPlayer PawnLocalPlayer { get; private set; }
 
     public float CurrentTime { get; private set; }
@@ -23,6 +25,7 @@ public class Match : MonoBehaviour
         this.PawnLocalPlayer = Instantiate<PawnLocalPlayer>(this.pawnLocalPlayerPrefab);
     }
 
+
     protected virtual void Start()
     {
         this.Begin();
@@ -33,6 +36,11 @@ public class Match : MonoBehaviour
         if (this.CurrentTime > 0f)
         {
             this.CurrentTime -= Time.deltaTime;
+
+            if (this.CurrentTimeChanged != null)
+            {
+                this.CurrentTimeChanged(this.CurrentTime);
+            }
 
             if (this.CurrentTime <= 0f)
             {

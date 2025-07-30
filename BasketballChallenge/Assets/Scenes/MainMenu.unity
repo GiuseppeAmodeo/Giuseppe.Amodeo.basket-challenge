@@ -740,7 +740,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1855362869}
+      - m_Target: {fileID: 1855362867}
         m_TargetAssemblyTypeName: GUIMenuManager, Assembly-CSharp
         m_MethodName: OnButtonQuitPressed
         m_Mode: 1
@@ -1108,7 +1108,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1855362869}
+      - m_Target: {fileID: 1855362867}
         m_TargetAssemblyTypeName: GUIMenuManager, Assembly-CSharp
         m_MethodName: OnButtonDecreaseTime
         m_Mode: 1
@@ -1553,7 +1553,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1855362869}
+      - m_Target: {fileID: 1855362867}
         m_TargetAssemblyTypeName: GUIMenuManager, Assembly-CSharp
         m_MethodName: OnButtonPlayPressed
         m_Mode: 1
@@ -1786,7 +1786,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1855362869}
+      - m_Target: {fileID: 1855362867}
         m_TargetAssemblyTypeName: GUIMenuManager, Assembly-CSharp
         m_MethodName: OnButtonIncreaseTime
         m_Mode: 1
@@ -1912,8 +1912,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1855362866}
+  - component: {fileID: 1855362867}
   - component: {fileID: 1855362868}
-  - component: {fileID: 1855362869}
   m_Layer: 0
   m_Name: GUIMenuManager
   m_TagString: Untagged
@@ -1936,6 +1936,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1855362867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1855362864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b3f35a4c8513d94da9fcdf23375d9e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loadLevelScript: {fileID: 1855362868}
+  timerText: {fileID: 1298025636}
 --- !u!114 &1855362868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1950,20 +1964,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextLevelName: Basketball
   delay: 0.1
---- !u!114 &1855362869
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1855362864}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ffc8062630e52dc45b1835853e5680c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  loadLevelScript: {fileID: 1855362868}
-  timerText: {fileID: 1298025636}
 --- !u!1 &1869839059
 GameObject:
   m_ObjectHideFlags: 0

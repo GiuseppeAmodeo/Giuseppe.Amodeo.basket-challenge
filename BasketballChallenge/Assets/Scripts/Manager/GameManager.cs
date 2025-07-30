@@ -1,4 +1,3 @@
-using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,7 +20,7 @@ public class GameManager : MonoBehaviour
         }
         GameManager.Instance = this;
 
-        GameManager.CurrentMatch = Instantiate<Match>(matchPrefab); 
+        GameManager.CurrentMatch = Instantiate<Match>(matchPrefab);
     }
 
 }

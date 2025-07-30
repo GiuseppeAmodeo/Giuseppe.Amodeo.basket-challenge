@@ -1,7 +1,6 @@
 ﻿using System;
-using UnityEditor.Experimental.GraphView;
+using System.Collections;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class Pawn : MonoBehaviour
 {
@@ -62,12 +61,14 @@ public class Pawn : MonoBehaviour
     {
         this.Ball = Instantiate<Ball>(this.ballPrefab);
         this.Ball.EnteredBasket += this.OnBallEnteredBasket;
+        GameManager.CurrentMatch.Ended += this.OnCurrentMatchEnded;
         this.CanShoot = true;
     }
 
     private void OnDestroy()
     {
         this.Ball.EnteredBasket -= this.OnBallEnteredBasket;
+        GameManager.CurrentMatch.Ended -= this.OnCurrentMatchEnded;
     }
 
     protected virtual void OnBallEnteredBasket(ScoreType scoreType)
@@ -75,6 +76,23 @@ public class Pawn : MonoBehaviour
         int num = (int)scoreType;
 
         this.AddScore(num, scoreType);
+    }
+
+    private void OnCurrentMatchEnded()
+    {
+        base.StartCoroutine(this.WaitForPawnStopShooting());
+    }
+
+    private IEnumerator WaitForPawnStopShooting()
+    {
+        while (this.IsShooting)
+        {
+            yield return null;
+        }
+
+        this.Ball.gameObject.SetActive(false);
+        base.gameObject.SetActive(false);
+        yield break;
     }
 
     public virtual void Setup()

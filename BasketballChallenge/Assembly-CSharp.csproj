@@ -56,7 +56,6 @@
     <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Manager\GUIMenuManager.cs" />
     <Compile Include="Assets\Scripts\Enums\ScoreType.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Court.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Pawn.cs" />
@@ -87,6 +86,13 @@
     <Compile Include="Assets\Scripts\GUI\GUIGameManager.cs" />
     <Compile Include="Assets\Scripts\Manager\LoadLevel.cs" />
     <Compile Include="Assets\Scripts\Manager\GameManager.cs" />
+    <Compile Include="Assets\Scripts\GUI\GUIMenuManager.cs" />
+    <Compile Include="Assets\Scripts\Utilities\GameObjectDisableAfterTime.cs" />
+    <Compile Include="Assets\Scripts\VFX\IEffect.cs" />
+    <Compile Include="Assets\Scripts\GUI\GUIScore.cs" />
+    <Compile Include="Assets\Scripts\GUI\GUIPawnScoreInfo.cs" />
+    <Compile Include="Assets\Scripts\GUI\GUIBar.cs" />
+    <Compile Include="Assets\Scripts\VFX\VFXTrail.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
