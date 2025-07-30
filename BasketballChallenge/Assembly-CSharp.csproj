@@ -62,6 +62,11 @@
     <Compile Include="Assets\Scripts\Gameplay\Backboard.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Pawn.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Ball.cs" />
+    <Compile Include="Assets\Scripts\Input\InputManager.cs" />
+    <Compile Include="Assets\Scripts\Input\InputProviderTouch.cs" />
+    <Compile Include="Assets\Scripts\Input\InputProviderMouse.cs" />
+    <Compile Include="Assets\Scripts\Input\IInputReceiver.cs" />
+    <Compile Include="Assets\Scripts\Input\InputProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
