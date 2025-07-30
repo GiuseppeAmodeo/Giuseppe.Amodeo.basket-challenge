@@ -73,9 +73,4 @@ public class PawnLocalPlayer : Pawn, IInputReceiver
             }
         }
     }
-
-    private void RecalculatePerfectForce()
-    {
-       
-    }
 }

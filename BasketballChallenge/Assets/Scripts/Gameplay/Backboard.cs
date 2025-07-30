@@ -7,12 +7,9 @@ public class Backboard : MonoBehaviour
     public ScoreType CurrentBackboardScore { get; private set; }
 
     private ScoreType DefaultBackboardScore = ScoreType.SimpleScore;
-    private int layerBall;
 
     private void Awake()
     {
-        this.layerBall = LayerMask.NameToLayer("Ball");
         CurrentBackboardScore = this.DefaultBackboardScore;
-
     }
 }

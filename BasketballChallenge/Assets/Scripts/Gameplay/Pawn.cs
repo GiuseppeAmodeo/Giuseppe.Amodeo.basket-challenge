@@ -3,10 +3,16 @@ using UnityEngine;
 
 public class Pawn : MonoBehaviour
 {
+    public delegate void ScoreChangedHandler(int score, ScoreType scoreType);
+
+    public event ScoreChangedHandler ScoreChanged;
+
     public event Action PawnSetup;
     public event Action PawnShoot;
 
     public Ball Ball { get; private set; }
+
+    public int Score { get; private set; }
 
     public bool IsShooting { get; protected set; }
 
@@ -64,7 +70,9 @@ public class Pawn : MonoBehaviour
 
     protected virtual void OnBallEnteredBasket(ScoreType scoreType)
     {
-       Debug.Log($"Ball entered basket with score type: {scoreType}");
+        int num = (int)scoreType;
+
+        this.AddScore(num, scoreType);
     }
 
     public virtual void Setup()
@@ -89,6 +97,18 @@ public class Pawn : MonoBehaviour
         }
     }
 
+    public void AddScore(int score, ScoreType scoreType)
+    {
+        this.Score += score;
+        Debug.Log($"Score changed: {this.Score} ");
+
+        if (this.ScoreChanged != null)
+        {
+            // Notify subscribers about the score change
+            this.ScoreChanged(this.Score, scoreType);
+        }
+    }
+
     public virtual void Shoot()
     {
         this.IsShooting = true;
@@ -106,7 +126,7 @@ public class Pawn : MonoBehaviour
         vector = transform.forward;
         this.Ball.Shoot(vector * d, transform.forward);
 
-        if (this.PawnShoot!=null)
+        if (this.PawnShoot != null)
         {
             this.PawnShoot();
         }
