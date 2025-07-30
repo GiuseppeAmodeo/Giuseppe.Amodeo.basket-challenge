@@ -1,5 +1,7 @@
 ﻿using System;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Pawn : MonoBehaviour
 {
@@ -107,6 +109,11 @@ public class Pawn : MonoBehaviour
             // Notify subscribers about the score change
             this.ScoreChanged(this.Score, scoreType);
         }
+    }
+
+    public void ResetScore()
+    {
+        this.Score = 0;
     }
 
     public virtual void Shoot()

@@ -1,42 +1,59 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using System;
+
 public class GUIMenuManager : MonoBehaviour
 {
-    private enum GameState
+    [SerializeField]
+    private LoadLevel loadLevelScript;
+
+    [SerializeField]
+    private TMP_Text timerText;
+
+    private int time = 0;
+    private int minTime = 2;
+    private int maxTime = 10;
+
+    private void Reset()
     {
-        MainMenu,
-        Gameplay,
-        Reward
+        this.loadLevelScript = base.GetComponent<LoadLevel>();
     }
 
-    private GameState currentGameState;
-
-    [Header("UI References")]
-    [SerializeField] private GameObject mainMenuUI;
-    [SerializeField] private GameObject gameplayUI;
-    [SerializeField] private GameObject rewardUI;
-
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        GoTo(GameState.MainMenu);
+        time = minTime;
     }
 
-    public void StartGame() => GoTo(GameState.Gameplay);
-    public void BackToMain() => GoTo(GameState.MainMenu);
-    public void ShowReward() => GoTo(GameState.Reward);
-    public void QuitGame() => Application.Quit();
-
-    private void GoTo(GameState newState)
+    public void OnButtonPlayPressed()
     {
-        currentGameState = newState;
+        GameManager.MatchTime = time;
+        this.loadLevelScript.LoadNextLevel();
+    }
 
-        if (this.mainMenuUI != null)
-            this.mainMenuUI.SetActive(this.currentGameState == GameState.MainMenu);
+    public void OnButtonQuitPressed()
+    {
+        Application.Quit();
+    }
 
-        if (this.gameplayUI != null)
-            this.gameplayUI.SetActive(this.currentGameState == GameState.Gameplay);
+    public void OnButtonIncreaseTime()
+    {
+        AddTime(+1);
+    }
 
-        if (this.rewardUI != null)
-            this.rewardUI.SetActive(this.currentGameState == GameState.Reward);
+    public void OnButtonDecreaseTime()
+    {
+        AddTime(-1);
+    }
+
+    private void AddTime(int amount)
+    {
+        time = Mathf.Clamp(time + amount, minTime, maxTime);
+
+        if (timerText != null)
+        {
+            timerText.text = time.ToString() + " min";
+        }
     }
 }
