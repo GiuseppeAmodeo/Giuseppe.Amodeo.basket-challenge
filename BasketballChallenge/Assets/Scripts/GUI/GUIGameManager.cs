@@ -29,6 +29,9 @@ public class GUIGameManager : MonoBehaviour
     private GUIBar guiForceBar;
 
     [SerializeField]
+    private GUIBar guiEnergyBar;
+
+    [SerializeField]
     private GameObject pauseMenu;
 
     [SerializeField]
@@ -39,6 +42,8 @@ public class GUIGameManager : MonoBehaviour
 
     [SerializeField]
     private GameObject panelMatchExtraTime;
+
+    private EnergyAccumulator energyAccumulatorLocalPlayer;
 
     private void Reset()
     {
@@ -53,6 +58,7 @@ public class GUIGameManager : MonoBehaviour
         this.textScore = componentsInChildren.First((RectTransform hR) => hR.name.Contains("TextScore")).GetComponent<TMP_Text>();
         GUIBar[] componentsInChildren2 = base.GetComponentsInChildren<GUIBar>(true);
         this.guiForceBar = componentsInChildren2.FirstOrDefault((GUIBar hB) => hB.name.Contains("Force"));
+        this.guiEnergyBar = componentsInChildren2.FirstOrDefault((GUIBar hB) => hB.name.Contains("Energy"));
         GUIScore[] componentsInChildren3 = base.GetComponentsInChildren<GUIScore>(true);
         this.guiScoreLocalPlayer = componentsInChildren3.FirstOrDefault((GUIScore hS) => hS.name.Contains("LocalPlayer"));
         this.guiScoreOpponent = componentsInChildren3.FirstOrDefault((GUIScore hS) => hS.name.Contains("Opponent"));
@@ -77,6 +83,15 @@ public class GUIGameManager : MonoBehaviour
         GameManager.CurrentMatch.PawnLocalPlayer.PerfectForceChanged += this.OnPawnLocalPlayerPerfectForceChanged;
         GameManager.CurrentMatch.PawnLocalPlayer.PawnSetup += this.OnPawnLocalPlayerSetup;
 
+        this.energyAccumulatorLocalPlayer = GameManager.CurrentMatch.PawnLocalPlayer.GetComponent<EnergyAccumulator>();
+
+        if (this.energyAccumulatorLocalPlayer != null)
+        {
+            this.guiEnergyBar.ThresholdValueSlider.value = this.energyAccumulatorLocalPlayer.ThresholdValue;
+            this.energyAccumulatorLocalPlayer.ThresholdChanged += this.OnEnergyAccumulatorLocalPlayerThresholdChanged;
+            this.energyAccumulatorLocalPlayer.ValueChanged += this.OnEnergyAccumulatorLocalPlayerValueChanged;
+        }
+
         this.guiScoreLocalPlayer.Init(GameManager.CurrentMatch.PawnLocalPlayer);
 
         if (GameManager.CurrentMatch.PawnOpponent != null)
@@ -98,6 +113,8 @@ public class GUIGameManager : MonoBehaviour
         GameManager.CurrentMatch.PawnLocalPlayer.ForceChanged -= this.OnPawnLocalPlayerForceChanged;
         GameManager.CurrentMatch.PawnLocalPlayer.PerfectForceChanged -= this.OnPawnLocalPlayerPerfectForceChanged;
         GameManager.CurrentMatch.PawnLocalPlayer.PawnSetup -= this.OnPawnLocalPlayerSetup;
+        this.energyAccumulatorLocalPlayer.ThresholdChanged -= this.OnEnergyAccumulatorLocalPlayerThresholdChanged;
+        this.energyAccumulatorLocalPlayer.ValueChanged -= this.OnEnergyAccumulatorLocalPlayerValueChanged;
     }
 
     private void OnPawnLocalPlayerSetup()
@@ -114,6 +131,7 @@ public class GUIGameManager : MonoBehaviour
     {
         this.pauseMenu.SetActive(false);
         this.guiForceBar.gameObject.SetActive(false);
+        this.guiEnergyBar.gameObject.SetActive(false);
 
         if (GameManager.CurrentMatch.PawnOpponent != null)
         {
@@ -164,6 +182,16 @@ public class GUIGameManager : MonoBehaviour
     private void OnPawnLocalPlayerPerfectForceChanged(float perfectForce)
     {
         this.guiForceBar.SetPerfectForce(perfectForce);
+    }
+
+    private void OnEnergyAccumulatorLocalPlayerValueChanged(float value)
+    {
+        this.guiEnergyBar.CurrentValueSlider.value = value;
+    }
+
+    private void OnEnergyAccumulatorLocalPlayerThresholdChanged(float threshold)
+    {
+        this.guiEnergyBar.ThresholdValueSlider.value = threshold;
     }
 
     public void OnButtonDonePressed()

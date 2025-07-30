@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 public class Pawn : MonoBehaviour
 {
-    public delegate void ScoreChangedHandler(int score, ScoreType scoreType);
+    public delegate void ScoreChangedHandler(int score, ScoreType scoreType, bool isPowerActive);
 
     public event ScoreChangedHandler ScoreChanged;
 
@@ -64,20 +63,40 @@ public class Pawn : MonoBehaviour
         this.Ball = Instantiate<Ball>(this.ballPrefab);
         this.Ball.EnteredBasket += this.OnBallEnteredBasket;
         GameManager.CurrentMatch.Ended += this.OnCurrentMatchEnded;
+        GameManager.CurrentMatch.ExtraTimeAdded += this.OnCurrentExtraTimeAdded;
+        GameManager.CurrentMatch.Draw += this.OnCurrentMatchDraw;
+
         this.CanShoot = true;
+    }
+
+    private void OnCurrentExtraTimeAdded()
+    {
+        this.CanShoot = true;
+    }
+
+    private void OnCurrentMatchDraw()
+    {
+        this.CanShoot = false;
     }
 
     private void OnDestroy()
     {
         this.Ball.EnteredBasket -= this.OnBallEnteredBasket;
         GameManager.CurrentMatch.Ended -= this.OnCurrentMatchEnded;
+        GameManager.CurrentMatch.ExtraTimeAdded -= this.OnCurrentExtraTimeAdded;
+        GameManager.CurrentMatch.Draw -= this.OnCurrentMatchDraw;
     }
 
     protected virtual void OnBallEnteredBasket(ScoreType scoreType)
     {
         int num = (int)scoreType;
 
-        this.AddScore(num, scoreType);
+        if (this.Ball.IsPowerActive)
+        {
+            num *= this.Ball.PowerScoreMultiplier;
+        }
+
+        this.AddScore(num, scoreType, this.Ball.IsPowerActive);
     }
 
     private void OnCurrentMatchEnded()
@@ -106,8 +125,6 @@ public class Pawn : MonoBehaviour
             this.currentShootingPoint.IsBusy = false;
         }
 
-        base.gameObject.SetActive(true);
-        this.Ball.gameObject.SetActive(true);
         this.shootingForceNormalized = 0f;
         this.currentShootingPoint = Court.Instance.GetFreeRandomShootingPoint();
         this.currentShootingPoint.IsBusy = true;
@@ -121,20 +138,15 @@ public class Pawn : MonoBehaviour
         }
     }
 
-    public void AddScore(int score, ScoreType scoreType)
+    public void AddScore(int score, ScoreType scoreType, bool isPowerActive)
     {
         this.Score += score;
 
         if (this.ScoreChanged != null)
         {
             // Notify subscribers about the score change
-            this.ScoreChanged(this.Score, scoreType);
+            this.ScoreChanged(this.Score, scoreType, isPowerActive);
         }
-    }
-
-    public void ResetScore()
-    {
-        this.Score = 0;
     }
 
     public virtual void Shoot()

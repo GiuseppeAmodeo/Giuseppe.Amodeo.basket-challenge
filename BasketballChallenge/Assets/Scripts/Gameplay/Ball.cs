@@ -9,6 +9,32 @@ public class Ball : MonoBehaviour
     public event Action TouchedFloor;
     public event Action<ScoreType> EnteredBasket;
 
+    public bool IsPowerActive
+    {
+        get
+        {
+            return this.isPowerActive;
+        }
+        set
+        {
+            this.isPowerActive = value;
+
+            if (value)
+            {
+                this.fireEffectsController.Play();
+            }
+            else
+            {
+                this.fireEffectsController.Stop();
+            }
+        }
+    }
+
+    public int PowerScoreMultiplier = 2;
+
+    [SerializeField]
+    private EffectsController fireEffectsController;
+
     [SerializeField]
     private Rigidbody rb;
 
@@ -18,6 +44,7 @@ public class Ball : MonoBehaviour
     private int layerFloor;
     private int layerBackboard;
     private bool hasCollidedWithBackboard;
+    private bool hasTouchedFloor;
     private bool isPowerActive;
 
     private void Reset()
@@ -27,6 +54,9 @@ public class Ball : MonoBehaviour
         this.rb.mass = 0.65f;
         this.rb.drag = 0.0f;
         this.rb.angularDrag = 0.05f;
+
+        EffectsController[] componentsInChildren = base.GetComponentsInChildren<EffectsController>(true);
+        this.fireEffectsController = componentsInChildren.FirstOrDefault((EffectsController hC) => hC.name.Contains("Fire"));
     }
 
     private void Awake()
@@ -52,17 +82,23 @@ public class Ball : MonoBehaviour
 
         if (layer == this.layerRing)
         {
-            Debug.Log("Ball touched the ring.");
+
         }
         else if (layer == this.layerFloor)
         {
-            if (this.TouchedFloor != null)
+            if (!hasTouchedFloor)
             {
-                this.TouchedFloor();
-                this.collisionCount = 0;
+                this.hasTouchedFloor = true;
+
+                if (this.TouchedFloor != null)
+                {
+                    this.TouchedFloor();
+                    this.collisionCount = 0;
+                }
             }
 
             this.hasCollidedWithBackboard = false;
+            this.hasTouchedFloor = false;
         }
         else if (layer == this.layerBackboard)
         {
@@ -99,6 +135,7 @@ public class Ball : MonoBehaviour
 
     public void Restore(Vector3 position)
     {
+        this.collisionCount = 0;
         this.rb.useGravity = false;
         this.rb.velocity = Vector3.zero;
         this.rb.angularVelocity = Vector3.zero;

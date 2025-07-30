@@ -24,17 +24,16 @@ public class Backboard : MonoBehaviour
 
     private GUIBackboardScoreInfo currentGUIScoreInfo;
 
-
     private void Reset()
     {
-        RectTransform[] componentsInChildren = base.GetComponentsInChildren<RectTransform>();
+        RectTransform[] componentsInChildren = base.GetComponentsInChildren<RectTransform>(true);
         GameObject gameObjectScore4 = componentsInChildren.First((RectTransform hR) => hR.name.Contains("+4")).gameObject;
         GameObject gameObjectScore6 = componentsInChildren.First((RectTransform hR) => hR.name.Contains("+6")).gameObject;
         GameObject gameObjectScore8 = componentsInChildren.First((RectTransform hR) => hR.name.Contains("+8")).gameObject;
 
-        GameObject gameObjectFrameScore4 = gameObjectScore4.GetComponentsInChildren<SpriteRenderer>().First((SpriteRenderer sp) => sp.name.Contains("Frame")).gameObject;
-        GameObject gameObjectFrameScore6 = gameObjectScore6.GetComponentsInChildren<SpriteRenderer>().First((SpriteRenderer sp) => sp.name.Contains("Frame")).gameObject;
-        GameObject gameObjectFrameScore8 = gameObjectScore8.GetComponentsInChildren<SpriteRenderer>().First((SpriteRenderer sp) => sp.name.Contains("Frame")).gameObject;
+        GameObject gameObjectFrameScore4 = gameObjectScore4.GetComponentsInChildren<SpriteRenderer>(true).First((SpriteRenderer sp) => sp.name.Contains("Frame")).gameObject;
+        GameObject gameObjectFrameScore6 = gameObjectScore6.GetComponentsInChildren<SpriteRenderer>(true).First((SpriteRenderer sp) => sp.name.Contains("Frame")).gameObject;
+        GameObject gameObjectFrameScore8 = gameObjectScore8.GetComponentsInChildren<SpriteRenderer>(true).First((SpriteRenderer sp) => sp.name.Contains("Frame")).gameObject;
 
 
         this.guiBackboardScoreInfo = new List<GUIBackboardScoreInfo>

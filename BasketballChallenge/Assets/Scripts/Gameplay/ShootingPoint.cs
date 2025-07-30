@@ -33,7 +33,7 @@ public class ShootingPoint : MonoBehaviour
 
     private void Reset()
     {
-        this.BallLocator = base.GetComponentsInChildren<Transform>().FirstOrDefault((Transform t) => t.name.Contains("BallLocator"));
+        this.BallLocator = base.GetComponentsInChildren<Transform>(true).FirstOrDefault((Transform t) => t.name.Contains("BallLocator"));
     }
 
     // Start is called before the first frame update

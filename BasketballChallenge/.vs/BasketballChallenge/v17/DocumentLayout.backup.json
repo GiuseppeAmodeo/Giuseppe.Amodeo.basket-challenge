@@ -3,24 +3,12 @@
   "WorkspaceRootPath": "F:\\Unity\\Projects\\Miniclip_Test\\Giuseppe.Amodeo.basket-challenge\\BasketballChallenge\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E84941E7-94D7-DB40-89A7-E49A3C6EA9D6}|Assembly-CSharp.csproj|F:\\Unity\\Projects\\Miniclip_Test\\Giuseppe.Amodeo.basket-challenge\\BasketballChallenge\\assets\\scripts\\gameplay\\match.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E84941E7-94D7-DB40-89A7-E49A3C6EA9D6}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\gameplay\\match.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E84941E7-94D7-DB40-89A7-E49A3C6EA9D6}|Assembly-CSharp.csproj|F:\\Unity\\Projects\\Miniclip_Test\\Giuseppe.Amodeo.basket-challenge\\BasketballChallenge\\assets\\scripts\\gameplay\\backboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E84941E7-94D7-DB40-89A7-E49A3C6EA9D6}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\gameplay\\backboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E84941E7-94D7-DB40-89A7-E49A3C6EA9D6}|Assembly-CSharp.csproj|f:\\unity\\projects\\miniclip_test\\giuseppe.amodeo.basket-challenge\\basketballchallenge\\assets\\scripts\\fsm\\fsmshootroutineai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E84941E7-94D7-DB40-89A7-E49A3C6EA9D6}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\fsm\\fsmshootroutineai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E84941E7-94D7-DB40-89A7-E49A3C6EA9D6}|Assembly-CSharp.csproj|F:\\Unity\\Projects\\Miniclip_Test\\Giuseppe.Amodeo.basket-challenge\\BasketballChallenge\\assets\\scripts\\fsm\\fsmshootroutinelocalplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E84941E7-94D7-DB40-89A7-E49A3C6EA9D6}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\fsm\\fsmshootroutinelocalplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E84941E7-94D7-DB40-89A7-E49A3C6EA9D6}|Assembly-CSharp.csproj|F:\\Unity\\Projects\\Miniclip_Test\\Giuseppe.Amodeo.basket-challenge\\BasketballChallenge\\assets\\scripts\\gui\\guigamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E84941E7-94D7-DB40-89A7-E49A3C6EA9D6}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\gui\\guigamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E84941E7-94D7-DB40-89A7-E49A3C6EA9D6}|Assembly-CSharp.csproj|F:\\Unity\\Projects\\Miniclip_Test\\Giuseppe.Amodeo.basket-challenge\\BasketballChallenge\\assets\\scripts\\gui\\guimenumanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E84941E7-94D7-DB40-89A7-E49A3C6EA9D6}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\gui\\guimenumanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E84941E7-94D7-DB40-89A7-E49A3C6EA9D6}|Assembly-CSharp.csproj|F:\\Unity\\Projects\\Miniclip_Test\\Giuseppe.Amodeo.basket-challenge\\BasketballChallenge\\assets\\scripts\\gameplay\\ball.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E84941E7-94D7-DB40-89A7-E49A3C6EA9D6}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\gameplay\\ball.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E84941E7-94D7-DB40-89A7-E49A3C6EA9D6}|Assembly-CSharp.csproj|F:\\Unity\\Projects\\Miniclip_Test\\Giuseppe.Amodeo.basket-challenge\\BasketballChallenge\\assets\\scripts\\manager\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -31,16 +19,44 @@
       "RelativeMoniker": "D:0:0:{E84941E7-94D7-DB40-89A7-E49A3C6EA9D6}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\gameplay\\pawn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E84941E7-94D7-DB40-89A7-E49A3C6EA9D6}|Assembly-CSharp.csproj|F:\\Unity\\Projects\\Miniclip_Test\\Giuseppe.Amodeo.basket-challenge\\BasketballChallenge\\assets\\scripts\\gameplay\\ball.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E84941E7-94D7-DB40-89A7-E49A3C6EA9D6}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\gameplay\\ball.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E84941E7-94D7-DB40-89A7-E49A3C6EA9D6}|Assembly-CSharp.csproj|F:\\Unity\\Projects\\Miniclip_Test\\Giuseppe.Amodeo.basket-challenge\\BasketballChallenge\\assets\\scripts\\gui\\guigamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E84941E7-94D7-DB40-89A7-E49A3C6EA9D6}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\gui\\guigamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E84941E7-94D7-DB40-89A7-E49A3C6EA9D6}|Assembly-CSharp.csproj|F:\\Unity\\Projects\\Miniclip_Test\\Giuseppe.Amodeo.basket-challenge\\BasketballChallenge\\assets\\scripts\\enums\\scoretype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E84941E7-94D7-DB40-89A7-E49A3C6EA9D6}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enums\\scoretype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E84941E7-94D7-DB40-89A7-E49A3C6EA9D6}|Assembly-CSharp.csproj|f:\\unity\\projects\\miniclip_test\\giuseppe.amodeo.basket-challenge\\basketballchallenge\\assets\\scripts\\gameplay\\energyaccumulator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E84941E7-94D7-DB40-89A7-E49A3C6EA9D6}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\gameplay\\energyaccumulator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E84941E7-94D7-DB40-89A7-E49A3C6EA9D6}|Assembly-CSharp.csproj|f:\\unity\\projects\\miniclip_test\\giuseppe.amodeo.basket-challenge\\basketballchallenge\\assets\\scripts\\fsm\\fsmshootroutineai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E84941E7-94D7-DB40-89A7-E49A3C6EA9D6}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\fsm\\fsmshootroutineai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E84941E7-94D7-DB40-89A7-E49A3C6EA9D6}|Assembly-CSharp.csproj|F:\\Unity\\Projects\\Miniclip_Test\\Giuseppe.Amodeo.basket-challenge\\BasketballChallenge\\assets\\scripts\\fsm\\fsmstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E84941E7-94D7-DB40-89A7-E49A3C6EA9D6}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\fsm\\fsmstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E84941E7-94D7-DB40-89A7-E49A3C6EA9D6}|Assembly-CSharp.csproj|F:\\Unity\\Projects\\Miniclip_Test\\Giuseppe.Amodeo.basket-challenge\\BasketballChallenge\\assets\\scripts\\input\\inputmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E84941E7-94D7-DB40-89A7-E49A3C6EA9D6}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\input\\inputmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E84941E7-94D7-DB40-89A7-E49A3C6EA9D6}|Assembly-CSharp.csproj|F:\\Unity\\Projects\\Miniclip_Test\\Giuseppe.Amodeo.basket-challenge\\BasketballChallenge\\assets\\scripts\\input\\iinputreceiver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E84941E7-94D7-DB40-89A7-E49A3C6EA9D6}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\input\\iinputreceiver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E84941E7-94D7-DB40-89A7-E49A3C6EA9D6}|Assembly-CSharp.csproj|F:\\Unity\\Projects\\Miniclip_Test\\Giuseppe.Amodeo.basket-challenge\\BasketballChallenge\\assets\\scripts\\gameplay\\match.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E84941E7-94D7-DB40-89A7-E49A3C6EA9D6}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\gameplay\\match.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E84941E7-94D7-DB40-89A7-E49A3C6EA9D6}|Assembly-CSharp.csproj|F:\\Unity\\Projects\\Miniclip_Test\\Giuseppe.Amodeo.basket-challenge\\BasketballChallenge\\assets\\scripts\\fsm\\fsmshootroutinelocalplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E84941E7-94D7-DB40-89A7-E49A3C6EA9D6}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\fsm\\fsmshootroutinelocalplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E84941E7-94D7-DB40-89A7-E49A3C6EA9D6}|Assembly-CSharp.csproj|F:\\Unity\\Projects\\Miniclip_Test\\Giuseppe.Amodeo.basket-challenge\\BasketballChallenge\\assets\\scripts\\gui\\guimenumanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E84941E7-94D7-DB40-89A7-E49A3C6EA9D6}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\gui\\guimenumanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E84941E7-94D7-DB40-89A7-E49A3C6EA9D6}|Assembly-CSharp.csproj|F:\\Unity\\Projects\\Miniclip_Test\\Giuseppe.Amodeo.basket-challenge\\BasketballChallenge\\assets\\scripts\\enums\\scoretype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E84941E7-94D7-DB40-89A7-E49A3C6EA9D6}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enums\\scoretype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E84941E7-94D7-DB40-89A7-E49A3C6EA9D6}|Assembly-CSharp.csproj|F:\\Unity\\Projects\\Miniclip_Test\\Giuseppe.Amodeo.basket-challenge\\BasketballChallenge\\assets\\scripts\\gameplay\\court.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -53,10 +69,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{E84941E7-94D7-DB40-89A7-E49A3C6EA9D6}|Assembly-CSharp.csproj|F:\\Unity\\Projects\\Miniclip_Test\\Giuseppe.Amodeo.basket-challenge\\BasketballChallenge\\assets\\scripts\\gameplay\\pawnlocalplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E84941E7-94D7-DB40-89A7-E49A3C6EA9D6}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\gameplay\\pawnlocalplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E84941E7-94D7-DB40-89A7-E49A3C6EA9D6}|Assembly-CSharp.csproj|F:\\Unity\\Projects\\Miniclip_Test\\Giuseppe.Amodeo.basket-challenge\\BasketballChallenge\\assets\\scripts\\gameplay\\backboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E84941E7-94D7-DB40-89A7-E49A3C6EA9D6}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\gameplay\\backboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E84941E7-94D7-DB40-89A7-E49A3C6EA9D6}|Assembly-CSharp.csproj|F:\\Unity\\Projects\\Miniclip_Test\\Giuseppe.Amodeo.basket-challenge\\BasketballChallenge\\assets\\scripts\\gameplay\\shootingpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -74,24 +86,61 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 10,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
+              "Title": "EnergyAccumulator.cs",
+              "DocumentMoniker": "F:\\Unity\\Projects\\Miniclip_Test\\Giuseppe.Amodeo.basket-challenge\\BasketballChallenge\\Assets\\Scripts\\Gameplay\\EnergyAccumulator.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Gameplay\\EnergyAccumulator.cs",
+              "ToolTip": "F:\\Unity\\Projects\\Miniclip_Test\\Giuseppe.Amodeo.basket-challenge\\BasketballChallenge\\Assets\\Scripts\\Gameplay\\EnergyAccumulator.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Gameplay\\EnergyAccumulator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T13:44:58.205Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "FSMState.cs",
+              "DocumentMoniker": "F:\\Unity\\Projects\\Miniclip_Test\\Giuseppe.Amodeo.basket-challenge\\BasketballChallenge\\Assets\\Scripts\\FSM\\FSMState.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\FSM\\FSMState.cs",
+              "ToolTip": "F:\\Unity\\Projects\\Miniclip_Test\\Giuseppe.Amodeo.basket-challenge\\BasketballChallenge\\Assets\\Scripts\\FSM\\FSMState.cs",
+              "RelativeToolTip": "Assets\\Scripts\\FSM\\FSMState.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T13:42:11.398Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "IInputReceiver.cs",
+              "DocumentMoniker": "F:\\Unity\\Projects\\Miniclip_Test\\Giuseppe.Amodeo.basket-challenge\\BasketballChallenge\\Assets\\Scripts\\Input\\IInputReceiver.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Input\\IInputReceiver.cs",
+              "ToolTip": "F:\\Unity\\Projects\\Miniclip_Test\\Giuseppe.Amodeo.basket-challenge\\BasketballChallenge\\Assets\\Scripts\\Input\\IInputReceiver.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Input\\IInputReceiver.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T13:42:08.431Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "FSMShootRoutineAI.cs",
               "DocumentMoniker": "F:\\Unity\\Projects\\Miniclip_Test\\Giuseppe.Amodeo.basket-challenge\\BasketballChallenge\\Assets\\Scripts\\FSM\\FSMShootRoutineAI.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\FSM\\FSMShootRoutineAI.cs",
               "ToolTip": "F:\\Unity\\Projects\\Miniclip_Test\\Giuseppe.Amodeo.basket-challenge\\BasketballChallenge\\Assets\\Scripts\\FSM\\FSMShootRoutineAI.cs",
               "RelativeToolTip": "Assets\\Scripts\\FSM\\FSMShootRoutineAI.cs",
-              "ViewState": "AgIAAC4AAAAAAAAAAAAQwEEAAAA1AAAAAAAAAA==",
+              "ViewState": "AgIAACYAAAAAAAAAAAAAwEEAAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-30T13:16:57.238Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 12,
               "Title": "GUIMenuManager.cs",
               "DocumentMoniker": "F:\\Unity\\Projects\\Miniclip_Test\\Giuseppe.Amodeo.basket-challenge\\BasketballChallenge\\Assets\\Scripts\\GUI\\GUIMenuManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\GUI\\GUIMenuManager.cs",
@@ -103,31 +152,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 2,
               "Title": "GameManager.cs",
               "DocumentMoniker": "F:\\Unity\\Projects\\Miniclip_Test\\Giuseppe.Amodeo.basket-challenge\\BasketballChallenge\\Assets\\Scripts\\Manager\\GameManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Manager\\GameManager.cs",
               "ToolTip": "F:\\Unity\\Projects\\Miniclip_Test\\Giuseppe.Amodeo.basket-challenge\\BasketballChallenge\\Assets\\Scripts\\Manager\\GameManager.cs",
               "RelativeToolTip": "Assets\\Scripts\\Manager\\GameManager.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-30T13:11:59.993Z"
+              "WhenOpened": "2025-07-30T13:11:59.993Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "GUIGameManager.cs",
               "DocumentMoniker": "F:\\Unity\\Projects\\Miniclip_Test\\Giuseppe.Amodeo.basket-challenge\\BasketballChallenge\\Assets\\Scripts\\GUI\\GUIGameManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\GUI\\GUIGameManager.cs",
               "ToolTip": "F:\\Unity\\Projects\\Miniclip_Test\\Giuseppe.Amodeo.basket-challenge\\BasketballChallenge\\Assets\\Scripts\\GUI\\GUIGameManager.cs",
               "RelativeToolTip": "Assets\\Scripts\\GUI\\GUIGameManager.cs",
-              "ViewState": "AgIAABUAAAAAAAAAAAAjwKgAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABMAAAAAAAAAAAAnwCwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-30T11:54:36.47Z"
+              "WhenOpened": "2025-07-30T11:54:36.47Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 18,
               "Title": "LoadLevel.cs",
               "DocumentMoniker": "F:\\Unity\\Projects\\Miniclip_Test\\Giuseppe.Amodeo.basket-challenge\\BasketballChallenge\\Assets\\Scripts\\Manager\\LoadLevel.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Manager\\LoadLevel.cs",
@@ -139,20 +190,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 10,
               "Title": "Match.cs",
               "DocumentMoniker": "F:\\Unity\\Projects\\Miniclip_Test\\Giuseppe.Amodeo.basket-challenge\\BasketballChallenge\\Assets\\Scripts\\Gameplay\\Match.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Gameplay\\Match.cs",
-              "ToolTip": "F:\\Unity\\Projects\\Miniclip_Test\\Giuseppe.Amodeo.basket-challenge\\BasketballChallenge\\Assets\\Scripts\\Gameplay\\Match.cs*",
-              "RelativeToolTip": "Assets\\Scripts\\Gameplay\\Match.cs*",
-              "ViewState": "AgIAACMAAAAAAAAAAAAvwDAAAAAFAAAAAAAAAA==",
+              "ToolTip": "F:\\Unity\\Projects\\Miniclip_Test\\Giuseppe.Amodeo.basket-challenge\\BasketballChallenge\\Assets\\Scripts\\Gameplay\\Match.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Gameplay\\Match.cs",
+              "ViewState": "AgIAAG8AAAAAAAAAAIA3wDQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-30T11:49:02.988Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-30T11:49:02.988Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 17,
               "Title": "ShootingPoint.cs",
               "DocumentMoniker": "F:\\Unity\\Projects\\Miniclip_Test\\Giuseppe.Amodeo.basket-challenge\\BasketballChallenge\\Assets\\Scripts\\Gameplay\\ShootingPoint.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Gameplay\\ShootingPoint.cs",
@@ -164,19 +214,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 0,
               "Title": "Backboard.cs",
               "DocumentMoniker": "F:\\Unity\\Projects\\Miniclip_Test\\Giuseppe.Amodeo.basket-challenge\\BasketballChallenge\\Assets\\Scripts\\Gameplay\\Backboard.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Gameplay\\Backboard.cs",
-              "ToolTip": "F:\\Unity\\Projects\\Miniclip_Test\\Giuseppe.Amodeo.basket-challenge\\BasketballChallenge\\Assets\\Scripts\\Gameplay\\Backboard.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Gameplay\\Backboard.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACQAAABoAAAAAAAAAA==",
+              "ToolTip": "F:\\Unity\\Projects\\Miniclip_Test\\Giuseppe.Amodeo.basket-challenge\\BasketballChallenge\\Assets\\Scripts\\Gameplay\\Backboard.cs*",
+              "RelativeToolTip": "Assets\\Scripts\\Gameplay\\Backboard.cs*",
+              "ViewState": "AgIAAE8AAAAAAAAAAAAkwE4AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-30T11:37:00.04Z"
+              "WhenOpened": "2025-07-30T11:37:00.04Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 16,
               "Title": "PawnLocalPlayer.cs",
               "DocumentMoniker": "F:\\Unity\\Projects\\Miniclip_Test\\Giuseppe.Amodeo.basket-challenge\\BasketballChallenge\\Assets\\Scripts\\Gameplay\\PawnLocalPlayer.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Gameplay\\PawnLocalPlayer.cs",
@@ -188,7 +239,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 15,
               "Title": "CameraManager.cs",
               "DocumentMoniker": "F:\\Unity\\Projects\\Miniclip_Test\\Giuseppe.Amodeo.basket-challenge\\BasketballChallenge\\Assets\\Scripts\\Manager\\CameraManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Manager\\CameraManager.cs",
@@ -200,7 +251,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 14,
               "Title": "Court.cs",
               "DocumentMoniker": "F:\\Unity\\Projects\\Miniclip_Test\\Giuseppe.Amodeo.basket-challenge\\BasketballChallenge\\Assets\\Scripts\\Gameplay\\Court.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Gameplay\\Court.cs",
@@ -212,7 +263,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 11,
               "Title": "FSMShootRoutineLocalPlayer.cs",
               "DocumentMoniker": "F:\\Unity\\Projects\\Miniclip_Test\\Giuseppe.Amodeo.basket-challenge\\BasketballChallenge\\Assets\\Scripts\\FSM\\FSMShootRoutineLocalPlayer.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\FSM\\FSMShootRoutineLocalPlayer.cs",
@@ -224,7 +275,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 13,
               "Title": "ScoreType.cs",
               "DocumentMoniker": "F:\\Unity\\Projects\\Miniclip_Test\\Giuseppe.Amodeo.basket-challenge\\BasketballChallenge\\Assets\\Scripts\\Enums\\ScoreType.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Enums\\ScoreType.cs",
@@ -236,7 +287,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 8,
               "Title": "InputManager.cs",
               "DocumentMoniker": "F:\\Unity\\Projects\\Miniclip_Test\\Giuseppe.Amodeo.basket-challenge\\BasketballChallenge\\Assets\\Scripts\\Input\\InputManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Input\\InputManager.cs",
@@ -248,27 +299,29 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 3,
               "Title": "Pawn.cs",
               "DocumentMoniker": "F:\\Unity\\Projects\\Miniclip_Test\\Giuseppe.Amodeo.basket-challenge\\BasketballChallenge\\Assets\\Scripts\\Gameplay\\Pawn.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Gameplay\\Pawn.cs",
               "ToolTip": "F:\\Unity\\Projects\\Miniclip_Test\\Giuseppe.Amodeo.basket-challenge\\BasketballChallenge\\Assets\\Scripts\\Gameplay\\Pawn.cs",
               "RelativeToolTip": "Assets\\Scripts\\Gameplay\\Pawn.cs",
-              "ViewState": "AgIAAIYAAAAAAAAAAAAmwAMAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAwKUAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-30T10:49:39.335Z"
+              "WhenOpened": "2025-07-30T10:49:39.335Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 1,
               "Title": "Ball.cs",
               "DocumentMoniker": "F:\\Unity\\Projects\\Miniclip_Test\\Giuseppe.Amodeo.basket-challenge\\BasketballChallenge\\Assets\\Scripts\\Gameplay\\Ball.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Gameplay\\Ball.cs",
               "ToolTip": "F:\\Unity\\Projects\\Miniclip_Test\\Giuseppe.Amodeo.basket-challenge\\BasketballChallenge\\Assets\\Scripts\\Gameplay\\Ball.cs",
               "RelativeToolTip": "Assets\\Scripts\\Gameplay\\Ball.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAASAAAAAAAAAA==",
+              "ViewState": "AgIAAGwAAAAAAAAAAAAowIIAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-30T10:46:19.72Z"
+              "WhenOpened": "2025-07-30T10:46:19.72Z",
+              "EditorCaption": ""
             }
           ]
         }
