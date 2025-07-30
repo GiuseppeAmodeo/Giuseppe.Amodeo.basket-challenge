@@ -1,33 +1,100 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
+﻿using System;
 using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
-    public event Action EnteredBasket;
+    public event Action<ScoreType> EnteredBasket;
+    public event Action TouchedFloor;
 
-    private void Start()
+    [SerializeField]
+    private Rigidbody rb;
+
+    private int collisionCount;
+
+    private int layerRing;
+    private int layerFloor;
+    private int layerBackboard;
+    private bool hasCollidedWithBackboard;
+
+    private void Reset()
     {
-        EnteredBasket += OnBallEnteredBasket;
+        this.rb = base.GetComponent<Rigidbody>();
+        this.rb.useGravity = false;
+        this.rb.mass = 0.65f;
+        this.rb.drag = 0.0f;
+        this.rb.angularDrag = 0.05f;
     }
 
-    private void OnDestroy()
+    private void Awake()
     {
-        EnteredBasket -= OnBallEnteredBasket;
+        this.layerFloor = LayerMask.NameToLayer("Floor");
+        this.layerRing = LayerMask.NameToLayer("Ring");
+        this.layerBackboard = LayerMask.NameToLayer("Backboard");
     }
 
-    private void OnBallEnteredBasket()
+    private void OnCollisionEnter(Collision collision)
     {
-       Debug.Log("Ball has entered the basket!");
+        this.collisionCount++;
+
+        int layer = collision.gameObject.layer;
+
+        if (layer == this.layerRing)
+        {
+            Debug.Log("The ball touched the Ring");
+        }
+        else if (layer == this.layerFloor)
+        {
+            Debug.Log("No Basket!");
+
+            if (this.TouchedFloor!=null)
+            {
+                this.TouchedFloor();
+            }
+
+            this.hasCollidedWithBackboard = false;
+        }
+        else if (layer == this.layerBackboard)
+        {
+            Debug.Log("The ball touched the Backboard");
+
+            this.hasCollidedWithBackboard = true;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (this.EnteredBasket != null)
+        if (this.collisionCount == 0)
         {
-            this.EnteredBasket();
+            if(this.EnteredBasket!=null)
+            {
+                this.EnteredBasket(ScoreType.PerfectScore);
+            }
         }
+        else
+        {
+            if (hasCollidedWithBackboard)
+            {
+                this.EnteredBasket((!this.hasCollidedWithBackboard) ? ScoreType.SimpleScore : Court.Instance.Backboard.CurrentBackboardScore);
+            }
+        }
+
+        this.hasCollidedWithBackboard = false;
+    }
+
+    public void Shoot(Vector3 force, Vector3 torque)
+    {
+        this.rb.useGravity = true;
+        this.rb.AddForce(force * this.rb.mass, ForceMode.Impulse);
+        this.rb.AddTorque(torque);
+    }
+
+    public void Restore(Vector3 position)
+    {
+        this.rb.useGravity = false;
+        this.rb.velocity = Vector3.zero;
+        this.rb.angularVelocity = Vector3.zero;
+        base.transform.position = position;
     }
 }
+
+

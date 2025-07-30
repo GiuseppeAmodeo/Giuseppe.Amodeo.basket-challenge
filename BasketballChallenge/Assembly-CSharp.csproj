@@ -57,6 +57,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Manager\GUIMenuManager.cs" />
+    <Compile Include="Assets\Scripts\Enums\ScoreType.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Court.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Backboard.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Pawn.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Ball.cs" />
   </ItemGroup>
   <ItemGroup>
