@@ -18,7 +18,7 @@ public class GUIScore : MonoBehaviour
         RectTransform[] componentsInChildren = GetComponentsInChildren<RectTransform>();
         this.Score = componentsInChildren.First((RectTransform hR) => hR.name.Contains("Score") && hR.gameObject != base.gameObject).GetComponent<TMP_Text>();
 
-        GameObject gameObject  = componentsInChildren.First((RectTransform hR) => hR.name.Contains("+2")).gameObject;
+        GameObject gameObject = componentsInChildren.First((RectTransform hR) => hR.name.Contains("+2")).gameObject;
         GameObject gameObject2 = componentsInChildren.First((RectTransform hR) => hR.name.Contains("+3")).gameObject;
         GameObject gameObject3 = componentsInChildren.First((RectTransform hR) => hR.name.Contains("+4")).gameObject;
         GameObject gameObject4 = componentsInChildren.First((RectTransform hR) => hR.name.Contains("+6")).gameObject;
@@ -29,27 +29,27 @@ public class GUIScore : MonoBehaviour
             new GUIPawnScoreInfo
             {
                 ScoreGameObject = gameObject,
-                ScoreType = ScoreType.SimpleScore
+                ScoreType = ScoreType.SimpleScore,
             },
             new GUIPawnScoreInfo
             {
                 ScoreGameObject = gameObject2,
-                ScoreType = ScoreType.PerfectScore
+                ScoreType = ScoreType.PerfectScore,
             },
             new GUIPawnScoreInfo
             {
                 ScoreGameObject = gameObject3,
-                ScoreType = ScoreType.MinBackBoardScore
+                ScoreType = ScoreType.MinBackBoardScore,
             },
             new GUIPawnScoreInfo
             {
                 ScoreGameObject = gameObject4,
-                ScoreType = ScoreType.MidBackBoardScore
+                ScoreType = ScoreType.MidBackBoardScore,
             },
             new GUIPawnScoreInfo
             {
                 ScoreGameObject = gameObject5,
-                ScoreType = ScoreType.MaxBackBoardScore
+                ScoreType = ScoreType.MaxBackBoardScore,
             }
         };
     }
@@ -70,13 +70,16 @@ public class GUIScore : MonoBehaviour
 
     private void OnDestroy()
     {
-        this.pawn.ScoreChanged -= this.OnPawnScoreChanged;
+        if (this.pawn != null)
+        {
+            this.pawn.ScoreChanged -= this.OnPawnScoreChanged;
+        }
     }
 
     private void OnPawnScoreChanged(int score, ScoreType scoreType)
     {
         this.Score.text = score.ToString();
-        this.guiPawnScoreInfo.Find((GUIPawnScoreInfo hS) => hS.ScoreType == scoreType).ScoreGameObject.SetActive(true);
+        this.guiPawnScoreInfo.Find((GUIPawnScoreInfo hS) => hS.ScoreType == scoreType ).ScoreGameObject.SetActive(true);
     }
 
 }

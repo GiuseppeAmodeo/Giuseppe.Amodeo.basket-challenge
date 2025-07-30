@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class ShootingPoint : MonoBehaviour
 {
+
     public float MinForce
     {
         get

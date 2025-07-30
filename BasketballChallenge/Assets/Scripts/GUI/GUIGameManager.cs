@@ -8,7 +8,7 @@ using System.Linq;
 public class GUIGameManager : MonoBehaviour
 {
     [SerializeField]
-    private GameObject guiRewardPanel;
+    private GUIReward guiRewardPanel;
 
     [SerializeField]
     private LoadLevel loadLevelScript;
@@ -23,34 +23,70 @@ public class GUIGameManager : MonoBehaviour
     private GUIScore guiScoreLocalPlayer;
 
     [SerializeField]
+    private GUIScore guiScoreOpponent;
+
+    [SerializeField]
     private GUIBar guiForceBar;
+
+    [SerializeField]
+    private GameObject pauseMenu;
+
+    [SerializeField]
+    private GameObject panelMatchWon;
+
+    [SerializeField]
+    private GameObject panelMatchLost;
+
+    [SerializeField]
+    private GameObject panelMatchExtraTime;
 
     private void Reset()
     {
         this.loadLevelScript = base.GetComponent<LoadLevel>();
-        RectTransform[] componentsInChildren = base.GetComponentsInChildren<RectTransform>();
-        this.guiRewardPanel = componentsInChildren.First((RectTransform hR) => hR.name.Contains("Panel_Reward")).gameObject;
-        this.textScore = componentsInChildren.First((RectTransform hR) => hR.name.Contains("TextScore")).GetComponent<TMP_Text>();
+        RectTransform[] componentsInChildren = base.GetComponentsInChildren<RectTransform>(true);
+        this.pauseMenu = componentsInChildren.First((RectTransform hR) => hR.name.Contains("PanelPause")).gameObject;
+        this.guiRewardPanel = base.GetComponentInChildren<GUIReward>(true);
+        this.panelMatchWon = componentsInChildren.First((RectTransform hR) => hR.name.Contains("Won")).gameObject;
+        this.panelMatchLost = componentsInChildren.First((RectTransform hR) => hR.name.Contains("Lost")).gameObject;
+        this.panelMatchExtraTime = componentsInChildren.First((RectTransform hR) => hR.name.Contains("ExtraTime")).gameObject;
         this.textTime = componentsInChildren.First((RectTransform hR) => hR.name.Contains("TextTime")).GetComponent<TMP_Text>();
-        GUIBar[] componentsInChildren2 = base.GetComponentsInChildren<GUIBar>();
+        this.textScore = componentsInChildren.First((RectTransform hR) => hR.name.Contains("TextScore")).GetComponent<TMP_Text>();
+        GUIBar[] componentsInChildren2 = base.GetComponentsInChildren<GUIBar>(true);
         this.guiForceBar = componentsInChildren2.FirstOrDefault((GUIBar hB) => hB.name.Contains("Force"));
+        GUIScore[] componentsInChildren3 = base.GetComponentsInChildren<GUIScore>(true);
+        this.guiScoreLocalPlayer = componentsInChildren3.FirstOrDefault((GUIScore hS) => hS.name.Contains("LocalPlayer"));
+        this.guiScoreOpponent = componentsInChildren3.FirstOrDefault((GUIScore hS) => hS.name.Contains("Opponent"));
     }
 
     private void Awake()
     {
-        this.guiRewardPanel.SetActive(false);
+        this.pauseMenu.SetActive(false);
+        this.guiRewardPanel.gameObject.SetActive(false);
+        this.panelMatchWon.SetActive(false);
+        this.panelMatchLost.SetActive(false);
+        this.panelMatchExtraTime.SetActive(false);
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        GameManager.CurrentMatch.Ended += OnCurrentMatchEnded;
+        GameManager.CurrentMatch.Ended += this.OnCurrentMatchEnded;
         GameManager.CurrentMatch.CurrentTimeChanged += this.OnMatchCurrentTimeChanged;
-        GameManager.CurrentMatch.PawnLocalPlayer.PawnSetup += this.OnPawnLocalPlayerSetup;
+        GameManager.CurrentMatch.ExtraTimeAdded += this.OnCurrentMatchExtraTimeAdded;
         GameManager.CurrentMatch.PawnLocalPlayer.ForceChanged += this.OnPawnLocalPlayerForceChanged;
         GameManager.CurrentMatch.PawnLocalPlayer.PerfectForceChanged += this.OnPawnLocalPlayerPerfectForceChanged;
+        GameManager.CurrentMatch.PawnLocalPlayer.PawnSetup += this.OnPawnLocalPlayerSetup;
 
         this.guiScoreLocalPlayer.Init(GameManager.CurrentMatch.PawnLocalPlayer);
+
+        if (GameManager.CurrentMatch.PawnOpponent != null)
+        {
+            this.guiScoreOpponent.Init(GameManager.CurrentMatch.PawnOpponent);
+        }
+        else
+        {
+            this.guiScoreOpponent.gameObject.SetActive(false);
+        }
 
     }
 
@@ -58,10 +94,10 @@ public class GUIGameManager : MonoBehaviour
     {
         GameManager.CurrentMatch.Ended -= OnCurrentMatchEnded;
         GameManager.CurrentMatch.CurrentTimeChanged -= this.OnMatchCurrentTimeChanged;
+        GameManager.CurrentMatch.ExtraTimeAdded -= this.OnCurrentMatchExtraTimeAdded;
         GameManager.CurrentMatch.PawnLocalPlayer.ForceChanged -= this.OnPawnLocalPlayerForceChanged;
         GameManager.CurrentMatch.PawnLocalPlayer.PerfectForceChanged -= this.OnPawnLocalPlayerPerfectForceChanged;
         GameManager.CurrentMatch.PawnLocalPlayer.PawnSetup -= this.OnPawnLocalPlayerSetup;
-
     }
 
     private void OnPawnLocalPlayerSetup()
@@ -69,13 +105,43 @@ public class GUIGameManager : MonoBehaviour
         this.guiForceBar.SetCurrentForce(0f);
     }
 
+    private void OnCurrentMatchExtraTimeAdded()
+    {
+        this.panelMatchExtraTime.SetActive(true);
+    }
+
     private void OnCurrentMatchEnded()
     {
-        Time.timeScale = 0f;
-        InputManager.Instance.IsInputEnabled = false;
+        this.pauseMenu.SetActive(false);
         this.guiForceBar.gameObject.SetActive(false);
-        this.guiRewardPanel.SetActive(true);
-        this.textScore.text = guiScoreLocalPlayer.Score.text;
+
+        if (GameManager.CurrentMatch.PawnOpponent != null)
+        {
+            base.StartCoroutine(this.WaitForBothPawnStopShooting());
+        }
+        else
+        {
+            this.guiRewardPanel.gameObject.SetActive(true);
+            this.textScore.text = guiScoreLocalPlayer.Score.text;
+            this.guiRewardPanel.SetRewardStars(GameManager.CurrentMatch.PawnLocalPlayer.Score);
+        }
+    }
+
+    private IEnumerator WaitForBothPawnStopShooting()
+    {
+        while (GameManager.CurrentMatch.PawnLocalPlayer.IsShooting || GameManager.CurrentMatch.PawnOpponent.IsShooting)
+        {
+            yield return null;
+        }
+        if (GameManager.CurrentMatch.PawnLocalPlayer.Score > GameManager.CurrentMatch.PawnOpponent.Score)
+        {
+            this.panelMatchWon.SetActive(true);
+        }
+        else if (GameManager.CurrentMatch.PawnLocalPlayer.Score < GameManager.CurrentMatch.PawnOpponent.Score)
+        {
+            this.panelMatchLost.SetActive(true);
+        }
+        yield break;
     }
 
     private void OnMatchCurrentTimeChanged(float currentTime)
@@ -100,19 +166,38 @@ public class GUIGameManager : MonoBehaviour
         this.guiForceBar.SetPerfectForce(perfectForce);
     }
 
-
     public void OnButtonDonePressed()
     {
+        this.pauseMenu.SetActive(false);
         InputManager.Instance.IsInputEnabled = true;
-        this.guiRewardPanel.SetActive(false);
         Time.timeScale = 1f;
-        GameManager.CurrentMatch.Begin();
-        GameManager.CurrentMatch.PawnLocalPlayer.ResetScore();
     }
 
-    public void OnQuitButtonPressed()
+    public void OnButtonRetryPressed()
+    {
+        this.loadLevelScript.ReloadCurrentLevel();
+        Time.timeScale = 1f;
+    }
+
+    public void OnButtonQuitPressed()
     {
         this.loadLevelScript.LoadNextLevel();
         Time.timeScale = 1f;
     }
+
+    public void SetPauseMenu()
+    {
+        this.pauseMenu.SetActive(!this.pauseMenu.activeSelf);
+        InputManager.Instance.IsInputEnabled = !this.pauseMenu.activeSelf;
+        if (this.pauseMenu.activeSelf)
+        {
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            Time.timeScale = 1f;
+        }
+    }
+
+ 
 }

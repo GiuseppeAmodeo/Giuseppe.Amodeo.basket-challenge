@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Pawn : MonoBehaviour
 {
@@ -104,6 +106,8 @@ public class Pawn : MonoBehaviour
             this.currentShootingPoint.IsBusy = false;
         }
 
+        base.gameObject.SetActive(true);
+        this.Ball.gameObject.SetActive(true);
         this.shootingForceNormalized = 0f;
         this.currentShootingPoint = Court.Instance.GetFreeRandomShootingPoint();
         this.currentShootingPoint.IsBusy = true;
@@ -120,7 +124,6 @@ public class Pawn : MonoBehaviour
     public void AddScore(int score, ScoreType scoreType)
     {
         this.Score += score;
-        Debug.Log($"Score changed: {this.Score} ");
 
         if (this.ScoreChanged != null)
         {

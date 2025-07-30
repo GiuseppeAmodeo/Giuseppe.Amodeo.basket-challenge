@@ -12,9 +12,14 @@ public class GUIMenuManager : MonoBehaviour
     [SerializeField]
     private TMP_Text timerText;
 
+    [SerializeField]
+    private TMP_Text diffText;
+
     private int time = 0;
     private int minTime = 2;
     private int maxTime = 10;
+
+    private int diff = 0;
 
     private void Reset()
     {
@@ -26,8 +31,17 @@ public class GUIMenuManager : MonoBehaviour
         time = minTime;
     }
 
-    public void OnButtonPlayPressed()
+    public void OnButtonSinglePlayerPressed()
     {
+        GameManager.CurrentMatchType = MatchType.SinglePlayer;
+        GameManager.MatchTime = time;
+        this.loadLevelScript.LoadNextLevel();
+    }
+
+    public void OnButtonPlayerVsAIPressed()
+    {
+        GameManager.CurrentDiffAI = (DiffAI)diff;
+        GameManager.CurrentMatchType = MatchType.PlayerVsAI;
         GameManager.MatchTime = time;
         this.loadLevelScript.LoadNextLevel();
     }
@@ -47,13 +61,35 @@ public class GUIMenuManager : MonoBehaviour
         AddTime(-1);
     }
 
+    public void OnButtonIncreaseDiff()
+    {
+        UpdateDiff(+1);
+    }
+
+    public void OnButtonDecreaseDiff()
+    {
+        UpdateDiff(-1);
+    }
+
+    private void UpdateDiff(int amount)
+    {
+        this.diff = Mathf.Clamp(this.diff + amount, 0, Enum.GetValues(typeof(DiffAI)).Length - 1);
+
+        if (this.diffText != null)
+        {
+            this.diffText.text = ((DiffAI)diff).ToString();
+        }
+    }
+
+
+
     private void AddTime(int amount)
     {
-        time = Mathf.Clamp(time + amount, minTime, maxTime);
+        this.time = Mathf.Clamp(this.time + amount, this.minTime, this.maxTime);
 
-        if (timerText != null)
+        if (this.timerText != null)
         {
-            timerText.text = time.ToString() + " min";
+            this.timerText.text = time.ToString() + " min";
         }
     }
 }
