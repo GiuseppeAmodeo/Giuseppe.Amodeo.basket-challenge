@@ -12,6 +12,8 @@ public sealed class Court : MonoBehaviour
 
     public Backboard Backboard;
 
+    public ShootingPoint ShootingPoint;
+
     private void Awake()
     {
         if (Instance != null)
@@ -20,5 +22,10 @@ public sealed class Court : MonoBehaviour
         }
 
         Instance = this;
+    }
+
+    public ShootingPoint GetShootingPoint()
+    {
+        return ShootingPoint;
     }
 }

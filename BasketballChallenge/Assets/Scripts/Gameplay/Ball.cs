@@ -1,10 +1,10 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
+using System;
 
 public class Ball : MonoBehaviour
 {
-    public event Action<ScoreType> EnteredBasket;
     public event Action TouchedFloor;
+    public event Action<ScoreType> EnteredBasket;
 
     [SerializeField]
     private Rigidbody rb;
@@ -32,6 +32,14 @@ public class Ball : MonoBehaviour
         this.layerBackboard = LayerMask.NameToLayer("Backboard");
     }
 
+    private void FixedUpdate()
+    {
+        if (this.rb.IsSleeping())
+        {
+            this.rb.AddTorque(Vector3.forward * Physics.sleepThreshold);
+        }
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         this.collisionCount++;
@@ -44,37 +52,35 @@ public class Ball : MonoBehaviour
         }
         else if (layer == this.layerFloor)
         {
-            Debug.Log("No Basket!");
 
-            if (this.TouchedFloor!=null)
+            if (this.TouchedFloor != null)
             {
                 this.TouchedFloor();
+                this.collisionCount = 0;
             }
 
             this.hasCollidedWithBackboard = false;
         }
         else if (layer == this.layerBackboard)
         {
-            Debug.Log("The ball touched the Backboard");
-
             this.hasCollidedWithBackboard = true;
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (this.collisionCount == 0)
+        if (this.EnteredBasket != null)
         {
-            if(this.EnteredBasket!=null)
+            if (this.collisionCount == 0)
             {
-                this.EnteredBasket(ScoreType.PerfectScore);
+                if (this.EnteredBasket!=null)
+                {
+                    this.EnteredBasket(ScoreType.PerfectScore);
+                }
             }
-        }
-        else
-        {
-            if (hasCollidedWithBackboard)
+            else
             {
-                this.EnteredBasket((!this.hasCollidedWithBackboard) ? ScoreType.SimpleScore : Court.Instance.Backboard.CurrentBackboardScore);
+               this.EnteredBasket((!this.hasCollidedWithBackboard) ? ScoreType.SimpleScore : Court.Instance.Backboard.CurrentBackboardScore);
             }
         }
 
