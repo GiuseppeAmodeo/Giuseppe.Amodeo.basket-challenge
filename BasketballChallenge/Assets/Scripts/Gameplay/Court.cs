@@ -12,7 +12,7 @@ public sealed class Court : MonoBehaviour
 
     public Backboard Backboard;
 
-    public ShootingPoint ShootingPoint;
+    public List<ShootingPoint> ShootingPoints;
 
     private void Awake()
     {
@@ -24,8 +24,16 @@ public sealed class Court : MonoBehaviour
         Instance = this;
     }
 
-    public ShootingPoint GetShootingPoint()
+    public ShootingPoint GetFreeRandomShootingPoint()
     {
-        return ShootingPoint;
+        ShootingPoint shootingPoint;
+        
+        do
+        {
+            int index = Random.Range(0,ShootingPoints.Count);
+            shootingPoint = ShootingPoints[index];
+        }
+        while (shootingPoint.IsBusy);
+        return shootingPoint;
     }
 }
