@@ -35,6 +35,15 @@ public class FSMShootRoutineAI : FSM
     [Range(0f, 1f)]
     private float maxShootSpread = 1f;
 
+    [SerializeField]
+    private DifficultySettings easyDiffSettings;
+
+    [SerializeField]
+    private DifficultySettings mediumDiffSettings;
+
+    [SerializeField]
+    private DifficultySettings hardDiffSettings;
+
     private FSMShootRoutineAI.StateIdle stateIdle;
 
     private FSMShootRoutineAI.StateShoot stateShoot;
@@ -55,34 +64,37 @@ public class FSMShootRoutineAI : FSM
         this.stateIdle.Next = this.stateShoot;
         this.stateShoot.Next = this.stateWait;
         yield return null;
+
         base.SwitchState(this.stateIdle);
-        UpdateDifficultAI();
+        UpdateDifficultyAI();
 
         yield break;
     }
 
-    private void UpdateDifficultAI()
+    private void UpdateDifficultyAI()
     {
-        if (GameManager.CurrentDiffAI == DiffAI.Easy)
+        switch (GameManager.CurrentDiffAI)
         {
-            this.minShootForce = 0.0f;
-            this.maxShootForce = 1f;
-            this.minShootSpread = 0.0f;
-            this.maxShootSpread = 1f;
-        }
-        else if(GameManager.CurrentDiffAI == DiffAI.Medium)
-        {
-            this.minShootForce = 0.4f;
-            this.maxShootForce = 0.8f;
-            this.minShootSpread = 0.0f;
-            this.maxShootSpread = 0.5f;
-        }
-        else if (GameManager.CurrentDiffAI == DiffAI.Hard)
-        {
-            this.minShootForce = 0.36f;
-            this.maxShootForce = 0.5f;
-            this.minShootSpread = 0.0f;
-            this.maxShootSpread = 0.1f;
+            case DiffAI.Easy:
+                this.minShootForce = this.easyDiffSettings.MinShootForce;
+                this.maxShootForce = this.easyDiffSettings.MaxShootForce;
+                this.minShootSpread = this.easyDiffSettings.MinShootSpread;
+                this.maxShootSpread = this.easyDiffSettings.MaxShootSpread;
+                break;
+            case DiffAI.Medium:
+                this.minShootForce = this.mediumDiffSettings.MinShootForce;
+                this.maxShootForce = this.mediumDiffSettings.MaxShootForce;
+                this.minShootSpread = this.mediumDiffSettings.MinShootSpread;
+                this.maxShootSpread = this.mediumDiffSettings.MaxShootSpread;
+                break;
+            case DiffAI.Hard:
+                this.minShootForce = this.hardDiffSettings.MinShootForce;
+                this.maxShootForce = this.hardDiffSettings.MaxShootForce;
+                this.minShootSpread = this.hardDiffSettings.MinShootSpread;
+                this.maxShootSpread = this.hardDiffSettings.MaxShootSpread;
+                break;
+            default:
+                break;
         }
     }
 

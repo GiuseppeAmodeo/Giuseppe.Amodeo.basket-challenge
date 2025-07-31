@@ -30,10 +30,4 @@ public sealed class GameManager : MonoBehaviour
         GameManager.CurrentMatch = Instantiate<Match>(this.matchPrefabsByType[(int)GameManager.CurrentMatchType]);
 
     }
-
-    private void Start()
-    {
-        Application.targetFrameRate = 60;
-    }
-
 }

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using System;
-
 public class Ball : MonoBehaviour
 {
     public event Action TouchedFloor;
@@ -36,6 +35,15 @@ public class Ball : MonoBehaviour
     private EffectsController fireEffectsController;
 
     [SerializeField]
+    private EffectsController shootEffectsController;
+
+    [SerializeField]
+    private EffectsController ringEffectsController;
+
+    [SerializeField]
+    private EffectsController bounceEffectsController;
+
+    [SerializeField]
     private Rigidbody rb;
 
     private int collisionCount;
@@ -57,6 +65,9 @@ public class Ball : MonoBehaviour
 
         EffectsController[] componentsInChildren = base.GetComponentsInChildren<EffectsController>(true);
         this.fireEffectsController = componentsInChildren.FirstOrDefault((EffectsController hC) => hC.name.Contains("Fire"));
+        this.shootEffectsController = componentsInChildren.FirstOrDefault((EffectsController hC) => hC.name.Contains("Shoot"));
+        this.ringEffectsController = componentsInChildren.FirstOrDefault((EffectsController hC) => hC.name.Contains("Ring"));
+        this.bounceEffectsController = componentsInChildren.FirstOrDefault((EffectsController hC) => hC.name.Contains("Bounce"));
     }
 
     private void Awake()
@@ -82,7 +93,7 @@ public class Ball : MonoBehaviour
 
         if (layer == this.layerRing)
         {
-
+            this.ringEffectsController.Play();
         }
         else if (layer == this.layerFloor)
         {
@@ -99,10 +110,12 @@ public class Ball : MonoBehaviour
 
             this.hasCollidedWithBackboard = false;
             this.hasTouchedFloor = false;
+            this.bounceEffectsController.Play();
         }
         else if (layer == this.layerBackboard)
         {
             this.hasCollidedWithBackboard = true;
+            this.bounceEffectsController.Play();
         }
     }
 
@@ -128,6 +141,7 @@ public class Ball : MonoBehaviour
 
     public void Shoot(Vector3 force, Vector3 torque)
     {
+        this.shootEffectsController.Play();
         this.rb.useGravity = true;
         this.rb.AddForce(force * this.rb.mass, ForceMode.Impulse);
         this.rb.AddTorque(torque);

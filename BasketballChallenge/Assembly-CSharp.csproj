@@ -99,7 +99,15 @@
     <Compile Include="Assets\Scripts\VFX\VFXFire.cs" />
     <Compile Include="Assets\Scripts\Gameplay\EnergyAccumulator.cs" />
     <Compile Include="Assets\Scripts\Enums\DiffAI.cs" />
+    <Compile Include="Assets\Scripts\SFX\SFX.cs" />
     <Compile Include="Assets\Scripts\GUI\GUIReward.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Basket.cs" />
+    <Compile Include="Assets\Scripts\Utilities\StarBounce.cs" />
+    <Compile Include="Assets\Scripts\Utilities\ForceField.cs" />
+    <Compile Include="Assets\Scripts\VFX\VFXBasket.cs" />
+    <Compile Include="Assets\Scripts\Utilities\PlayerPreferences.cs" />
+    <Compile Include="Assets\Scripts\Enums\ForceFieldMode.cs" />
+    <Compile Include="Assets\Scripts\ScriptableObjects\DifficultySettings.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

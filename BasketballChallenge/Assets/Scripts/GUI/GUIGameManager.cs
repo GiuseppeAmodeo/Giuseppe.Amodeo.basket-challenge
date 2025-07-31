@@ -43,6 +43,15 @@ public class GUIGameManager : MonoBehaviour
     [SerializeField]
     private GameObject panelMatchExtraTime;
 
+    [SerializeField]
+    private Image buttonAudio;
+
+    [SerializeField]
+    private Sprite buttonAudioOn;
+
+    [SerializeField]
+    private Sprite buttonAudioOff;
+
     private EnergyAccumulator energyAccumulatorLocalPlayer;
 
     private void Reset()
@@ -67,6 +76,7 @@ public class GUIGameManager : MonoBehaviour
     private void Awake()
     {
         this.pauseMenu.SetActive(false);
+        this.SetAudio(true);
         this.guiRewardPanel.gameObject.SetActive(false);
         this.panelMatchWon.SetActive(false);
         this.panelMatchLost.SetActive(false);
@@ -192,6 +202,22 @@ public class GUIGameManager : MonoBehaviour
     private void OnEnergyAccumulatorLocalPlayerThresholdChanged(float threshold)
     {
         this.guiEnergyBar.ThresholdValueSlider.value = threshold;
+    }
+
+    public void OnButtonAudioPressed()
+    {
+        bool isAudioEnabled = PlayerPreferences.IsAudioEnabled;
+        SetAudio(!isAudioEnabled);
+    }
+
+    private void SetAudio(bool enabled)
+    {
+        PlayerPreferences.IsAudioEnabled = enabled;
+        
+        Sprite audioImage = enabled ? this.buttonAudioOn : this.buttonAudioOff;
+        buttonAudio.sprite = audioImage;
+        
+        AudioListener.pause = !enabled;
     }
 
     public void OnButtonDonePressed()

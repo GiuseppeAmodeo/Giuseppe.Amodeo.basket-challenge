@@ -83,3 +83,6 @@ MonoBehaviour:
   maxShootForce: 1
   minShootSpread: 0
   maxShootSpread: 1
+  easyDiffSettings: {fileID: 11400000, guid: df170052b482a274f98f1c4cb5e78ea9, type: 2}
+  mediumDiffSettings: {fileID: 11400000, guid: 76f07b6a9bf08fa48b6d2cd62e4f5c0f, type: 2}
+  hardDiffSettings: {fileID: 11400000, guid: d13386eb2e17d414e84e5b468331a1b4, type: 2}

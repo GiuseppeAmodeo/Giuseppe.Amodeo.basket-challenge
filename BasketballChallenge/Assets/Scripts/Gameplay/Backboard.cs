@@ -24,6 +24,9 @@ public class Backboard : MonoBehaviour
 
     private GUIBackboardScoreInfo currentGUIScoreInfo;
 
+    [SerializeField]
+    private EffectsController backboardWithBonusEffectsController;
+
     private void Reset()
     {
         RectTransform[] componentsInChildren = base.GetComponentsInChildren<RectTransform>(true);
@@ -76,6 +79,7 @@ public class Backboard : MonoBehaviour
         if (collision.gameObject.layer == this.layerBall && this.currentGUIScoreInfo != null && this.currentGUIScoreInfo.Score.activeSelf)
         {
             this.currentGUIScoreInfo.Frame.SetActive(true);
+            this.backboardWithBonusEffectsController.Play();
         }
     }
 
